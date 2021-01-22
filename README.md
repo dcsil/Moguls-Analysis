@@ -1,30 +1,19 @@
-# Team Repo Template
+# X Tech
 
-This Repository includes a template for your assignments.
+![Team Logo](./logo_large.png)
 
-Follow [these instructions](https://help.github.com/en/articles/creating-a-repository-from-a-template) to create a repo in the `dcsil` organization for your Assignment.
+We choose **X Tech** as our company name. 
 
-## Requirements
+The reason behind this is that "X" is an appealing symbol with mystical significance, conveying the meaning of superpower. Although none of us from the company are genetic mutant superheroes as "X-men", we possess the ambition to use technology as our superpower, helping people improve and overcome obstacles they face, and making this world a slightly better one.
 
-You must [add the following topics](https://help.github.com/en/articles/classifying-your-repository-with-topics#adding-topics-to-your-repository) to the repository:
+X can also represent experimental and extraordinary, fitting well with our company as a newborn technological startup in the athletic space. Our company will continue evolving from experimental to extraordinary, with the vision to help athletes stay extraordinary.
 
-- `F2020` (indicates Fall 2020. If it is not Fall 2020, I forgot to update this. Please make a PR on this repo to update it to the appropriate term!)
-- `assignment`
-
-### README template starts below this line 👇👇👇
-
-----
-
-# COMPANY NAME
-
-![Team Logo](./logo.png)
-
-COMPANY NAME is a company founded in the THEME industry. COMPANY NAME aims to VISION STATEMENT.
 
 Table of Contents
 ---
 
 - [People](./team/)
+- [Team Principles](./team/team_principles.md)
 - [Diversity](./team/diversity.md)
 - [Product & Research](./product_research/)
     - [Market](./product_research/market.md)
