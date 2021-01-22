@@ -15,9 +15,9 @@ You must [add the following topics](https://help.github.com/en/articles/classify
 
 ----
 
-# COMPANY NAME
+# X Tech
 
-![Team Logo](./logo.png)
+![Team Logo](./logo1.png)
 
 COMPANY NAME is a company founded in the THEME industry. COMPANY NAME aims to VISION STATEMENT.
 
@@ -25,6 +25,7 @@ Table of Contents
 ---
 
 - [People](./team/)
+- [Team Principles](./team/team_principles.md)
 - [Diversity](./team/diversity.md)
 - [Product & Research](./product_research/)
     - [Market](./product_research/market.md)
