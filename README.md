@@ -2,7 +2,7 @@
 
 ![Team Logo](./logo_large.png)
 
-We choose "X Tech" as our company name. 
+We choose **X Tech** as our company name. 
 
 The reason behind this is that "X" is an appealing symbol with mystical significance, conveying the meaning of superpower. Although none of us from the company are genetic mutant superheroes as "X-men", we possess the ambition to use technology as our superpower, helping people improve and overcome obstacles they face, and making this world a slightly better one.
 
