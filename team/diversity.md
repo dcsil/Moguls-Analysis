@@ -28,11 +28,13 @@ Kexin has gained knowledge about product management and growth hacking during he
 
 ## Weaknesses
 
+Our product targets professional athletes and coaches, with our team vision to "help athletes stay extraordinary". However, none of our team members is with athletic experience. This makes us lacks tangible background information of our target customers' problems. Furthermore, the lack of athletic background makes attain deeper insights into the actual needs of users not that easy, while at the same time understanding the actual needs is extremely important for reaching the product-market fit.
 
+Another weakness is that we don't have a member with UI/UX designing experience. As the progress of product design, customers sense and value good user interface and user experience, so we also need to deal with this lack of background.
 
 ### Subject Matter Experts
 
-Subject matter experts (SMEs) who can help us address our expertise gaps are...
+Subject matter experts (SMEs) who can help us address our expertise gaps are ...
 
 ## Diversity
 
