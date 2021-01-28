@@ -34,7 +34,9 @@ Another weakness is that we don't have a member with UI/UX designing experience.
 
 ### Subject Matter Experts
 
-Subject matter experts (SMEs) who can help us address our expertise gaps are ...
+To address our expertise gaps, we will reach out to as many as possible subject matter experts in the athletic space, and communicate with them as frequently as possible, so as to know about their training process, their current solution for performance analysis, and their actual needs. Our main partner, CSI, which is also our main customer, will be our first choice to find SMEs from. And Dr. Tsai from CSI, who knows about athletic training and also with engineering experience, will definitely be the expert that we should communicate more with to mitigate our expertise gap in this field.
+
+To dealing with the absence of UI/UX designers in our team, we will consult friends with designing experience and collect views from them for our propositional user interface designs. We will improve our design under their suggestions or guidance, give our customer a better experience. 
 
 ## Diversity
 
