@@ -3,9 +3,9 @@ Diversity
 
 Diversity and inclusion express the acceptance and respect of individuals or groups with different attributes. 
 
-Diversity and inclusion are key to support the individual flourishing and the advancement of business and product, especially in the circumstance of our start-up, which globally targets professional sporting institutes scattering around the whole world.
+Diversity and inclusion are key to support the individual flourishing and the advancement of business and product, especially in the circumstance of our start-up, which globally targets professional sporting institutes scattering around the whole world. 
 
-X Tech is based in Canada, a country that respects people with different racial identities and cultural backgrounds. Our team also commits to support diversity and inclusion, and through this to reach our team's greatest creativity and potential.
+X Tech commits to support diversity and inclusion, and believe that ensuring diversity and inclusion can help us reach our greatest creativity and potential as a whole.
 
 
 Team Background
