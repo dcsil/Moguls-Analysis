@@ -40,10 +40,15 @@ To dealing with the absence of UI/UX designers in our team, we will consult frie
 
 ## Diversity
 
-Our team has a varied background, but we acknowledge that we do not have people experienced in/who are....
+All members from our team come from Asia and none of us grow up in Canada, so we are not familiar with the culture of other countries. Also, there are no white people on our team and we could potentially lose the voice from some perspective. Furthermore, all of us are all university students that in the age of early 20s and we will need advice from younger and older people with different level of education since we cannot expect that all of our users are of a similar age and education. Last but not least, we hope our product could also help Paralympics athletes and we welcome people with disabilities to join our team. 
+
 
 ### How this can impact us
 
-A potential impact of this is...
+The lack of diversity will introduce potential blind spots to our product. Canada is a country of multiculturalism that our users will have a varied educational and cultural background, and they are of different race and age. We might not know the actual needs of individuals without understanding their identities and culture. Also, no one in our team is known as a member of the LGBTQ group while our user could be. There could be some unconscious bias that things that are common for us would be challenging for them. The scenario is the same for people with disabilities. We, as able-bodied, cannot imagine the life of them and there could be lots of unconscious bias make it worse and also hurt their feelings. 
 
-People with backgrounds that differ from out own can help us in the THEME industry because...
+All of these will have significant impacts on the usability of our product. More importantly, we respect everyone and we want every user of our product to feel respected and treasured no matter who they are. Those blind spots will not only have negative effects on our team and company but also hurt us as a person. No one wants to be an incon1siderate and insensitive person; however, sometimes we think we are thinking objectively but we are actually not. Increase team diversity will introduce opinions from other perspectives to eliminate some of the blind spots. 
+
+The fact is there may still be some unconscious bias among our team even though we try our best to avoid them. Therefore, we will try to reach out to different people as much as we could do to correct our thoughts. We look forward to working with different kinds of people and hearing the voices of various perspectives. Although there will be some minority groups that we could not reach out to or we do not even know their existence, we will still consider their needs and improve our product consistently.
+
+
