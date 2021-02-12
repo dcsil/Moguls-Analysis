@@ -20,4 +20,4 @@ Table of Contents
     - [Roadmap](./product_research/roadmap.md)
     - [Tech Stacks](./product_research/tech_stacks.md)
     - [Use Cases](./product_research/use_cases.md)
-
+    - [Architecture Diagram](./product_research/architecture_diagram.png)
