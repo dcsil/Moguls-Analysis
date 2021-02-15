@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 
 
 # app = Flask(__name__, static_folder="../dist/static", template_folder="../dist")
@@ -8,7 +8,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "<h1>Hello World: This is our server using Flask</h1>"
+    # Return index.html from the static folder
+    return app.send_static_file('index.html')
 
 
 if __name__ == '__main__':
