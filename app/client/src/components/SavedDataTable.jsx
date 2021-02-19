@@ -493,6 +493,12 @@ const DataTable = forwardRef((props, ref) => {
         label="Dense padding"
         style={{ marginBottom: "20px" }}
       />
+      <FilterGrid
+        ref={filterChild}
+        initialRows={rows}
+        exitFilter={handleExitFilter}
+        style={{ display: "none" }}
+      />
     </div>
   ) : (
     <FilterGrid

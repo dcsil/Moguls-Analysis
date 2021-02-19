@@ -86,7 +86,7 @@ const FilterGrid = forwardRef((props, ref) => {
   }));
 
   return (
-    <div>
+    <div style={{ ...props.style }}>
       <Paper style={{ marginTop: "30px" }}>
         <div style={{ height: 500, width: "100%" }}>
           <DataGrid
