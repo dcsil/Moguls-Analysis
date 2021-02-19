@@ -79,7 +79,17 @@ function FileUpload(props) {
         fullWidth="true"
         style={{ marginTop: "20px" }}
         disabled={!file}
-        onClick={props.onClick}
+        onClick={() => {
+          props.onClick({
+            // Some hardcode data for UI tests
+            videoName: file.name,
+            kneeHipAngle: 5,
+            hipChestAngle: -3,
+            chestArmAngle: 6,
+            armsAngleDiff: 14,
+            kneesAngleDiff: 8,
+          });
+        }}
       >
         Start Analyze
       </Button>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
@@ -23,10 +23,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function FileDataDisplay(props) {
+const FileDataDisplay = forwardRef((props, ref) => {
   const classes = useStyles();
 
   const [result, setResult] = useState({});
+
+  useImperativeHandle(ref, () => ({
+    displayResult(resultObj) {
+      setResult(resultObj);
+    },
+  }));
 
   return (
     <div>
@@ -37,7 +43,28 @@ function FileDataDisplay(props) {
             <h3>&amp;</h3>
             <h3>Click "START ANALYZE"</h3>
           </div>
-        ) : null}
+        ) : (
+          <div>
+            <h3 style={{ marginBottom: "20px" }}>
+              File name: {result.videoName}
+            </h3>
+            <h3 style={{ marginBottom: "10px" }}>
+              Angle between knees and hip: {result.kneeHipAngle}
+            </h3>
+            <h3 style={{ marginBottom: "10px" }}>
+              Angle between hip and chest: {result.hipChestAngle}
+            </h3>
+            <h3 style={{ marginBottom: "10px" }}>
+              Angle between chest and arms: {result.chestArmAngle}
+            </h3>
+            <h3 style={{ marginBottom: "10px" }}>
+              Angle Difference between arms: {result.armsAngleDiff}
+            </h3>
+            <h3 style={{ marginBottom: "10px" }}>
+              Angle Difference between knees: {result.kneesAngleDiff}
+            </h3>
+          </div>
+        )}
       </Paper>
       <Button
         variant="contained"
@@ -51,6 +78,6 @@ function FileDataDisplay(props) {
       </Button>
     </div>
   );
-}
+});
 
 export default FileDataDisplay;
