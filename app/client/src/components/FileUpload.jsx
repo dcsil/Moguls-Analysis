@@ -1,12 +1,37 @@
 import React, { useCallback, useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import { useDropzone } from "react-dropzone";
 import ReactPlayer from "react-player";
+import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 
 // reference code:
 // https://www.educative.io/edpresso/file-upload-in-react
 // https://github.com/NikValdez/react-dropzone-tut/blob/master/src/App.js
 
-function FileUpload() {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    textAlign: "center",
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    color: theme.palette.text.secondary,
+    minHeight: "400px",
+    marginTop: "20px",
+  },
+  button: {
+    marginTop: "20px",
+  },
+}));
+
+function FileUpload(props) {
+  const classes = useStyles();
+
   // State to store uploaded file
   const [file, setFile] = useState(null);
   const [videoPath, setVideoPath] = useState(null);
@@ -28,26 +53,38 @@ function FileUpload() {
   }
 
   return (
-    <div {...getRootProps()}>
-      <input {...getInputProps()} />
-      {file ? (
-        <ReactPlayer url={videoPath} width="20%" height="20%" controls={true} />
-      ) : (
-        <p>Drag and drop a video file here, or click to select a video</p>
-      )}
+    <div className={classes.root}>
+      <Paper className={classes.paper} {...getRootProps()}>
+        <input {...getInputProps()} />
+        {file ? (
+          <ReactPlayer
+            url={videoPath}
+            width="100%"
+            height="100%"
+            controls={true}
+          />
+        ) : (
+          <div>
+            <h2 style={{ marginBottom: "20px" }}>
+              Drag and drop a video file here, or click to select a video
+            </h2>
+            <h3>(Suppoted video extensions: mp4, mkv)</h3>
+          </div>
+        )}
+      </Paper>
+      <Button
+        variant="contained"
+        color="secondary"
+        size="large"
+        fullWidth="true"
+        style={{ marginTop: "20px" }}
+        disabled={!file}
+        onClick={props.onClick}
+      >
+        Start Analyze
+      </Button>
     </div>
   );
 }
-
-// return (
-//   <div id="upload-box">
-//     <input type="file" onChange={handleUpload} />
-//     <p>Filename: {file.name}</p>
-//     <p>File type: {file.type}</p>
-//     <p>File size: {file.size} bytes</p>
-//     {file && <ImageThumb image={file} />}
-//   </div>
-// );
-// }
 
 export default FileUpload;

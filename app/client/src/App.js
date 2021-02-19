@@ -2,14 +2,14 @@ import React from "react";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import FileUpload from "./components/FileUpload";
+import Analyzer from "./components/Analyzer";
 
 function App() {
   return (
     <div>
       <Header />
       <Footer />
-      <FileUpload />
+      <Analyzer />
     </div>
   );
 }
