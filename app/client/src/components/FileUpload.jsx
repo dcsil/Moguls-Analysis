@@ -85,11 +85,11 @@ function FileUpload(props) {
           props.onClick({
             // Some hardcode data for UI tests
             videoName: file.name,
-            kneeHipAngle: 5.2,
-            hipChestAngle: -3,
-            chestArmAngle: 6.1,
-            armsAngleDiff: 9.2,
-            kneesAngleDiff: 8,
+            kneeHipAngle: (5.2).toFixed(1),
+            hipChestAngle: (-3).toFixed(1),
+            chestArmAngle: (6.1).toFixed(1),
+            armsAngleDiff: (9.2).toFixed(1),
+            kneesAngleDiff: (8).toFixed(1),
           });
         }}
       >

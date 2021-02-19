@@ -1,5 +1,9 @@
-import React, { useState, forwardRef, useImperativeHandle } from "react";
-import { create, all } from "mathjs";
+import React, {
+  useState,
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+} from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import { lighten, makeStyles } from "@material-ui/core/styles";
@@ -21,6 +25,10 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
+import TableData from "./TableData";
+import FilterGrid from "./FilterGrid";
+
+const { data: rawData } = TableData;
 
 function createData(
   _id,
@@ -46,137 +54,9 @@ function createData(
   };
 }
 
-// make some randomized data for ui test
-const config = {
-  number: "number",
-  precision: 64,
-  predictable: false,
-  randomSeed: 3,
-};
-const math = create(all, config);
-
-const rowsData = [
-  createData(
-    "283",
-    "Giacomo Guilizzoni",
-    new Date("2021-02-08")
-      .toISOString()
-      .replace("-", "/")
-      .split("T")[0]
-      .replace("-", "/"),
-    "cork 7s",
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1)
-  ),
-  createData(
-    "823",
-    "Marco Botton",
-    new Date("2021-02-08")
-      .toISOString()
-      .replace("-", "/")
-      .split("T")[0]
-      .replace("-", "/"),
-    "quad twisters",
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1)
-  ),
-  createData(
-    "344",
-    "Giacomo Guilizzoni",
-    new Date("2021-02-07")
-      .toISOString()
-      .replace("-", "/")
-      .split("T")[0]
-      .replace("-", "/"),
-    "dspin 7s",
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1)
-  ),
-  createData(
-    "779",
-    "Mariah Maclachlan",
-    new Date("2021-02-07")
-      .toISOString()
-      .replace("-", "/")
-      .split("T")[0]
-      .replace("-", "/"),
-    "back fulls",
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1)
-  ),
-  createData(
-    "243",
-    "Valerie Liberty",
-    new Date("2021-02-06")
-      .toISOString()
-      .replace("-", "/")
-      .split("T")[0]
-      .replace("-", "/"),
-    "cork 7s",
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1)
-  ),
-  createData(
-    "343",
-    "Giacomo Guilizzoni",
-    new Date("2021-02-05")
-      .toISOString()
-      .replace("-", "/")
-      .split("T")[0]
-      .replace("-", "/"),
-    "quad twisters",
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1)
-  ),
-  createData(
-    "123",
-    "Marco Botton",
-    new Date("2021-02-02")
-      .toISOString()
-      .replace("-", "/")
-      .split("T")[0]
-      .replace("-", "/"),
-    "dspin 7s",
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1)
-  ),
-  createData(
-    "564",
-    "Mariah Maclachlan",
-    new Date("2021-02-01")
-      .toISOString()
-      .replace("-", "/")
-      .split("T")[0]
-      .replace("-", "/"),
-    "quad twisters",
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1),
-    math.round(math.random(-10, 10), 1)
-  ),
-];
+const rowsData = rawData.map((data) => {
+  return createData(...data);
+});
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -261,7 +141,6 @@ function EnhancedTableHead(props) {
   const {
     classes,
     onSelectAllClick,
-    onDeleteClick,
     order,
     orderBy,
     numSelected,
@@ -379,7 +258,7 @@ const EnhancedTableToolbar = (props) => {
           </IconButton>
         </Tooltip>
       ) : (
-        <Tooltip title="Filter list">
+        <Tooltip title="Filter">
           <IconButton aria-label="filter list">
             <FilterListIcon />
           </IconButton>
@@ -393,6 +272,8 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
   handleDelete: PropTypes.func.isRequired,
 };
+
+// Below start the data table
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -420,6 +301,7 @@ const useStyles = makeStyles((theme) => ({
 
 const DataTable = forwardRef((props, ref) => {
   const classes = useStyles();
+  const filterChild = useRef();
 
   const [order, setOrder] = useState("desc");
   const [orderBy, setOrderBy] = useState("date");
@@ -432,8 +314,13 @@ const DataTable = forwardRef((props, ref) => {
   // handler for parent component to add new saved result
   useImperativeHandle(ref, () => ({
     addSavedResult(newResult) {
+      // update self
       setRows((prevState) => {
-        return [...prevState, newResult];
+        // update child
+        let updatedResults = [...prevState, newResult];
+        console.log(updatedResults);
+        filterChild.current.updateRows(updatedResults);
+        return updatedResults;
       });
     },
   }));
@@ -454,11 +341,13 @@ const DataTable = forwardRef((props, ref) => {
   };
 
   const handleDelete = (event) => {
-    setRows(
-      rows.filter((row) => {
-        return !selected.includes(row._id);
-      })
-    );
+    const newRows = rows.filter((row) => {
+      return !selected.includes(row._id);
+    });
+    // update self
+    setRows(newRows);
+    // // update child
+    filterChild.current.updateRows(newRows);
     setSelected([]);
   };
 
@@ -591,6 +480,7 @@ const DataTable = forwardRef((props, ref) => {
         label="Dense padding"
         style={{ marginBottom: "20px" }}
       />
+      <FilterGrid ref={filterChild} initialRows={rows} />
     </div>
   );
 });

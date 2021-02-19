@@ -3,11 +3,23 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import AssignmentReturnIcon from "@material-ui/icons/AssignmentReturn";
+import * as math from "mathjs";
+
+// import for dialog form
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+
+// import for alert
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,6 +49,13 @@ const FileDataDisplay = forwardRef((props, ref) => {
   const [date, setDate] = useState(null);
   const [trick, setTrick] = useState("");
   const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
+
+  useImperativeHandle(ref, () => ({
+    displayResult(resultObj) {
+      setResult(resultObj);
+    },
+  }));
 
   const handleDialogClickOpen = () => {
     setDialogOpen(true);
@@ -52,36 +71,42 @@ const FileDataDisplay = forwardRef((props, ref) => {
     const newResult = {
       ...result,
       name: athlete,
-      date: date,
+      date: date ? date.replace("-", "/").replace("-", "/") : "",
       trick: trick,
-      _id: "999",
+      _id: math.round(math.random(101, 999)),
     };
     props.handleNewResultSave(newResult);
+    setAthlete("");
+    setDate("");
+    setTrick("");
+    setSnackbarOpen(true);
   };
 
   const handleDialogTextChange = (event) => {
     const { name, value } = event.target;
-    if (name == "athlete") {
+    if (name === "athlete") {
       setAthlete(value);
-    } else if (name == "date") {
+    } else if (name === "date") {
       setDate(value);
     } else {
       setTrick(value);
     }
   };
 
-  useImperativeHandle(ref, () => ({
-    displayResult(resultObj) {
-      setResult(resultObj);
-    },
-  }));
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
 
   return (
     <div>
       <Paper className={classes.paper}>
         {result && Object.keys(result).length === 0 ? (
           <div>
-            <h2>Upload a video from left</h2>
+            <AssignmentReturnIcon fontSize="large" />
+            <h2 style={{ marginTop: "20px" }}>Upload a video from left</h2>
             <h2>&amp;</h2>
             <h2>Click "START ANALYZE"</h2>
           </div>
@@ -120,6 +145,7 @@ const FileDataDisplay = forwardRef((props, ref) => {
         Save Results
       </Button>
 
+      {/* dialog form for filling data information */}
       <Dialog
         open={dialogOpen}
         onClose={handleDialogClose}
@@ -176,6 +202,17 @@ const FileDataDisplay = forwardRef((props, ref) => {
           </DialogActions>
         </form>
       </Dialog>
+
+      {/* Snackbar for showing saved successfully message */}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+      >
+        <Alert onClose={handleSnackbarClose} severity="success">
+          Saved successfully onto the data table!
+        </Alert>
+      </Snackbar>
     </div>
   );
 });

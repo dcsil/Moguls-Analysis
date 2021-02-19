@@ -5,6 +5,7 @@ import FileDataDisplay from "./FileDataDisplay";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import SavedDataTable from "./SavedDataTable";
+// import FilterGrid from "./FilterGrid";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,6 +44,7 @@ export default function Analyzer() {
         </Grid>
       </Grid>
       <SavedDataTable ref={resultSaveChild} />
+      {/* <FilterGrid /> */}
     </Container>
   );
 }
