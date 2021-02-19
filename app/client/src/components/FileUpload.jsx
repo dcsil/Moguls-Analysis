@@ -4,6 +4,7 @@ import { useDropzone } from "react-dropzone";
 import ReactPlayer from "react-player";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 
 // reference code:
 // https://www.educative.io/edpresso/file-upload-in-react
@@ -65,7 +66,8 @@ function FileUpload(props) {
           />
         ) : (
           <div>
-            <h2 style={{ marginBottom: "20px" }}>
+            <CloudUploadIcon fontSize="large" />
+            <h2 style={{ margin: "20px" }}>
               Drag and drop a video file here, or click to select a video
             </h2>
             <h3>(Suppoted video extensions: mp4, mkv)</h3>

@@ -4,6 +4,7 @@ import FileUpload from "./FileUpload";
 import FileDataDisplay from "./FileDataDisplay";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
+import SavedDataTable from "./SavedDataTable";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,7 +25,7 @@ export default function Analyzer() {
   }
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <FileUpload onClick={handleResult} />
@@ -33,6 +34,7 @@ export default function Analyzer() {
           <FileDataDisplay ref={resultDisplayChild} />
         </Grid>
       </Grid>
+      <SavedDataTable />
     </Container>
   );
 }

@@ -40,8 +40,8 @@ const FileDataDisplay = forwardRef((props, ref) => {
         {result && Object.keys(result).length === 0 ? (
           <div>
             <h2>Upload a video from left</h2>
-            <h3>&amp;</h3>
-            <h3>Click "START ANALYZE"</h3>
+            <h2>&amp;</h2>
+            <h2>Click "START ANALYZE"</h2>
           </div>
         ) : (
           <div>
@@ -58,10 +58,10 @@ const FileDataDisplay = forwardRef((props, ref) => {
               Angle between chest and arms: {result.chestArmAngle}
             </h3>
             <h3 style={{ marginBottom: "10px" }}>
-              Angle Difference between arms: {result.armsAngleDiff}
+              Angle difference between arms: {result.armsAngleDiff}
             </h3>
             <h3 style={{ marginBottom: "10px" }}>
-              Angle Difference between knees: {result.kneesAngleDiff}
+              Angle difference between knees: {result.kneesAngleDiff}
             </h3>
           </div>
         )}
