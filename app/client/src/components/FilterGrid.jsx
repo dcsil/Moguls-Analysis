@@ -1,6 +1,7 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import Paper from "@material-ui/core/Paper";
 import { DataGrid, GridToolbar } from "@material-ui/data-grid";
+import { Button } from "@material-ui/core";
 
 const filterHeadCells = [
   {
@@ -85,19 +86,30 @@ const FilterGrid = forwardRef((props, ref) => {
   }));
 
   return (
-    <Paper>
-      <div style={{ height: 1000, width: "100%" }}>
-        <DataGrid
-          columns={filterHeadCells}
-          rows={filterRowsData}
-          filterModel={dataFilterModel}
-          components={{
-            Toolbar: GridToolbar,
-          }}
-          display={false}
-        />
-      </div>
-    </Paper>
+    <div>
+      <Paper style={{ marginTop: "30px" }}>
+        <div style={{ height: 500, width: "100%" }}>
+          <DataGrid
+            columns={filterHeadCells}
+            rows={filterRowsData}
+            filterModel={dataFilterModel}
+            components={{
+              Toolbar: GridToolbar,
+            }}
+          />
+        </div>
+      </Paper>
+      <Button
+        variant="contained"
+        color="secondary"
+        size="large"
+        fullWidth={true}
+        style={{ marginTop: "20px", marginBottom: "40px" }}
+        onClick={props.exitFilter}
+      >
+        Exit Filtering Mode
+      </Button>
+    </div>
   );
 });
 

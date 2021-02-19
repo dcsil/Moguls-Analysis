@@ -195,6 +195,7 @@ EnhancedTableHead.propTypes = {
   onRequestSort: PropTypes.func.isRequired,
   onSelectAllClick: PropTypes.func.isRequired,
   onDeleteClick: PropTypes.func.isRequired,
+  onOpenFilter: PropTypes.func.isRequired,
   order: PropTypes.oneOf(["asc", "desc"]).isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
@@ -258,8 +259,8 @@ const EnhancedTableToolbar = (props) => {
           </IconButton>
         </Tooltip>
       ) : (
-        <Tooltip title="Filter">
-          <IconButton aria-label="filter list">
+        <Tooltip title="Enter Filtering Mode">
+          <IconButton aria-label="filter list" onClick={props.handleOpenFilter}>
             <FilterListIcon />
           </IconButton>
         </Tooltip>
@@ -271,6 +272,7 @@ const EnhancedTableToolbar = (props) => {
 EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
   handleDelete: PropTypes.func.isRequired,
+  handleOpenFilter: PropTypes.func.isRequired,
 };
 
 // Below start the data table
@@ -310,6 +312,7 @@ const DataTable = forwardRef((props, ref) => {
   const [dense, setDense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [rows, setRows] = useState(rowsData);
+  const [open, setOpen] = useState(true);
 
   // handler for parent component to add new saved result
   useImperativeHandle(ref, () => ({
@@ -351,6 +354,14 @@ const DataTable = forwardRef((props, ref) => {
     setSelected([]);
   };
 
+  const handleOpenFilter = () => {
+    setOpen(false);
+  };
+
+  const handleExitFilter = () => {
+    setOpen(true);
+  };
+
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
     let newSelected = [];
@@ -389,12 +400,13 @@ const DataTable = forwardRef((props, ref) => {
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
-  return (
+  return open ? (
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <EnhancedTableToolbar
           numSelected={selected.length}
           handleDelete={handleDelete}
+          handleOpenFilter={handleOpenFilter}
         />
         <TableContainer>
           <Table
@@ -410,6 +422,7 @@ const DataTable = forwardRef((props, ref) => {
               orderBy={orderBy}
               onSelectAllClick={handleSelectAllClick}
               onDeleteClick={handleDelete}
+              onOpenFilter={handleOpenFilter}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />
@@ -480,8 +493,13 @@ const DataTable = forwardRef((props, ref) => {
         label="Dense padding"
         style={{ marginBottom: "20px" }}
       />
-      <FilterGrid ref={filterChild} initialRows={rows} />
     </div>
+  ) : (
+    <FilterGrid
+      ref={filterChild}
+      initialRows={rows}
+      exitFilter={handleExitFilter}
+    />
   );
 });
 

@@ -69,6 +69,7 @@ export default {
       math.round(math.random(-10, 10), 1).toFixed(1),
       math.round(math.random(-10, 10), 1).toFixed(1),
       math.round(math.random(-10, 10), 1).toFixed(1),
+      math.round(math.random(-10, 10), 1).toFixed(1),
     ],
     [
       "243",
