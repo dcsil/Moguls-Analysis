@@ -91,6 +91,7 @@ const headCells = [
     numeric: false,
     disablePadding: true,
     label: "ID",
+    tip: "Record ID",
   },
   {
     id: "name",
@@ -110,30 +111,40 @@ const headCells = [
     numeric: true,
     disablePadding: false,
     label: "Knees-Hip Angle",
+    tip:
+      "Angle between knees and hip relative to 180° (a value less than 0 indicates an angle less than 180°)",
   },
   {
     id: "hipChestAngle",
     numeric: true,
     disablePadding: false,
     label: "Hip-chest Angle",
+    tip:
+      "Angle between hip and chest relative to 180° (a value less than 0 indicates an angle less than 180°)",
   },
   {
     id: "chestArmAngle",
     numeric: true,
     disablePadding: false,
     label: "Chest-Arms Angle",
+    tip:
+      "Angle between chest and arm relative to 180° (a value less than 0 indicates an angle less than 180°) ",
   },
   {
     id: "armsAngleDiff",
     numeric: true,
     disablePadding: false,
     label: "Arms Angle Difference",
+    tip:
+      "Angle difference between two arms (the value is absolute difference so greater than or equal to 0)",
   },
   {
     id: "kneesAngleDiff",
     numeric: true,
     disablePadding: false,
     label: "Knees Angle Difference",
+    tip:
+      "Angle difference between two knees (the value is absolute difference so greater than or equal to 0)",
   },
 ];
 
@@ -175,7 +186,9 @@ function EnhancedTableHead(props) {
               direction={orderBy === headCell.id ? order : "asc"}
               onClick={createSortHandler(headCell.id)}
             >
-              {headCell.label}
+              <Tooltip title={headCell.tip || ""} placement="top">
+                <div>{headCell.label}</div>
+              </Tooltip>
               {orderBy === headCell.id ? (
                 <span className={classes.visuallyHidden}>
                   {order === "desc" ? "sorted descending" : "sorted ascending"}
@@ -349,7 +362,7 @@ const DataTable = forwardRef((props, ref) => {
     });
     // update self
     setRows(newRows);
-    // // update child
+    // update child
     filterChild.current.updateRows(newRows);
     setSelected([]);
   };
