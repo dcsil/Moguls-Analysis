@@ -16,12 +16,17 @@ export default function Analyzer() {
   const classes = useStyles();
   const [result, setResult] = useState({});
   const resultDisplayChild = useRef();
+  const resultSaveChild = useRef();
 
   function handleResult(resultObj) {
     // update current saved results
     setResult(resultObj);
     // update current displaying metrics
     resultDisplayChild.current.displayResult(resultObj);
+  }
+
+  function handleNewResultSave(newResult) {
+    resultSaveChild.current.addSavedResult(newResult);
   }
 
   return (
@@ -31,10 +36,13 @@ export default function Analyzer() {
           <FileUpload onClick={handleResult} />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <FileDataDisplay ref={resultDisplayChild} />
+          <FileDataDisplay
+            ref={resultDisplayChild}
+            handleNewResultSave={handleNewResultSave}
+          />
         </Grid>
       </Grid>
-      <SavedDataTable />
+      <SavedDataTable ref={resultSaveChild} />
     </Container>
   );
 }

@@ -70,7 +70,7 @@ function FileUpload(props) {
             <h2 style={{ margin: "20px" }}>
               Drag and drop a video file here, or click to select a video
             </h2>
-            <h3>(Suppoted video extensions: mp4, mkv)</h3>
+            <h3>(Supported video extensions: mp4, mkv)</h3>
           </div>
         )}
       </Paper>
@@ -78,17 +78,17 @@ function FileUpload(props) {
         variant="contained"
         color="secondary"
         size="large"
-        fullWidth="true"
+        fullWidth={true}
         style={{ marginTop: "20px" }}
         disabled={!file}
         onClick={() => {
           props.onClick({
             // Some hardcode data for UI tests
             videoName: file.name,
-            kneeHipAngle: 5,
+            kneeHipAngle: 5.2,
             hipChestAngle: -3,
-            chestArmAngle: 6,
-            armsAngleDiff: 14,
+            chestArmAngle: 6.1,
+            armsAngleDiff: 9.2,
             kneesAngleDiff: 8,
           });
         }}

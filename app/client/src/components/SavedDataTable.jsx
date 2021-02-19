@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { create, all } from "mathjs";
 import PropTypes from "prop-types";
 import clsx from "clsx";
@@ -55,7 +55,7 @@ const config = {
 };
 const math = create(all, config);
 
-const rows = [
+const rowsData = [
   createData(
     "283",
     "Giacomo Guilizzoni",
@@ -261,6 +261,7 @@ function EnhancedTableHead(props) {
   const {
     classes,
     onSelectAllClick,
+    onDeleteClick,
     order,
     orderBy,
     numSelected,
@@ -314,6 +315,7 @@ EnhancedTableHead.propTypes = {
   numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
   onSelectAllClick: PropTypes.func.isRequired,
+  onDeleteClick: PropTypes.func.isRequired,
   order: PropTypes.oneOf(["asc", "desc"]).isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
@@ -372,7 +374,7 @@ const EnhancedTableToolbar = (props) => {
 
       {numSelected > 0 ? (
         <Tooltip title="Delete">
-          <IconButton aria-label="delete">
+          <IconButton aria-label="delete" onClick={props.handleDelete}>
             <DeleteIcon />
           </IconButton>
         </Tooltip>
@@ -389,6 +391,7 @@ const EnhancedTableToolbar = (props) => {
 
 EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
+  handleDelete: PropTypes.func.isRequired,
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -415,15 +418,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DataTable() {
+const DataTable = forwardRef((props, ref) => {
   const classes = useStyles();
 
-  const [order, setOrder] = React.useState("desc");
-  const [orderBy, setOrderBy] = React.useState("date");
-  const [selected, setSelected] = React.useState([]);
-  const [page, setPage] = React.useState(0);
-  const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [order, setOrder] = useState("desc");
+  const [orderBy, setOrderBy] = useState("date");
+  const [selected, setSelected] = useState([]);
+  const [page, setPage] = useState(0);
+  const [dense, setDense] = useState(false);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rows, setRows] = useState(rowsData);
+
+  // handler for parent component to add new saved result
+  useImperativeHandle(ref, () => ({
+    addSavedResult(newResult) {
+      setRows((prevState) => {
+        return [...prevState, newResult];
+      });
+    },
+  }));
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -437,6 +450,15 @@ export default function DataTable() {
       setSelected(newSelecteds);
       return;
     }
+    setSelected([]);
+  };
+
+  const handleDelete = (event) => {
+    setRows(
+      rows.filter((row) => {
+        return !selected.includes(row._id);
+      })
+    );
     setSelected([]);
   };
 
@@ -481,7 +503,10 @@ export default function DataTable() {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar
+          numSelected={selected.length}
+          handleDelete={handleDelete}
+        />
         <TableContainer>
           <Table
             className={classes.table}
@@ -495,6 +520,7 @@ export default function DataTable() {
               order={order}
               orderBy={orderBy}
               onSelectAllClick={handleSelectAllClick}
+              onDeleteClick={handleDelete}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />
@@ -567,4 +593,6 @@ export default function DataTable() {
       />
     </div>
   );
-}
+});
+
+export default DataTable;
