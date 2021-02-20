@@ -42,17 +42,17 @@ def image_preprocess():
 
 # TODO: link database and communicate with database
 @app.route('/getAllData', methods=['GET'])
-def image_preprocess():
+def get_all_data():
     pass
 
 
 @app.route('/addData', methods=['POST'])
-def image_preprocess():
+def add_data():
     pass
 
 
 @app.route('/deleteData', methods=['POST'])
-def image_preprocess():
+def delete_data():
     pass
 
 
