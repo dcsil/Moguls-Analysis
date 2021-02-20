@@ -1,7 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import AssignmentReturnIcon from "@material-ui/icons/AssignmentReturn";
+import * as math from "mathjs";
+
+// import for dialog form
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+
+// import for alert
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,34 +41,180 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function FileDataDisplay(props) {
+const FileDataDisplay = forwardRef((props, ref) => {
   const classes = useStyles();
 
   const [result, setResult] = useState({});
+  const [athlete, setAthlete] = useState("");
+  const [date, setDate] = useState(null);
+  const [trick, setTrick] = useState("");
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
+
+  useImperativeHandle(ref, () => ({
+    displayResult(resultObj) {
+      setResult(resultObj);
+    },
+  }));
+
+  const handleDialogClickOpen = () => {
+    setDialogOpen(true);
+  };
+
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+  };
+
+  const handleDialogCloseAndSave = (event) => {
+    event.preventDefault();
+    handleDialogClose();
+    const newResult = {
+      ...result,
+      name: athlete,
+      date: date ? date.replace("-", "/").replace("-", "/") : "",
+      trick: trick,
+      _id: math.round(math.random(101, 999)),
+    };
+    props.handleNewResultSave(newResult);
+    setAthlete("");
+    setDate("");
+    setTrick("");
+    setSnackbarOpen(true);
+  };
+
+  const handleDialogTextChange = (event) => {
+    const { name, value } = event.target;
+    if (name === "athlete") {
+      setAthlete(value);
+    } else if (name === "date") {
+      setDate(value);
+    } else {
+      setTrick(value);
+    }
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
 
   return (
     <div>
       <Paper className={classes.paper}>
         {result && Object.keys(result).length === 0 ? (
           <div>
-            <h2>Upload a video from left</h2>
-            <h3>&amp;</h3>
-            <h3>Click "START ANALYZE"</h3>
+            <AssignmentReturnIcon fontSize="large" />
+            <h2 style={{ marginTop: "20px" }}>Upload a video from left</h2>
+            <h2>&amp;</h2>
+            <h2>Click "START ANALYZE"</h2>
           </div>
-        ) : null}
+        ) : (
+          <div>
+            <h3 style={{ marginBottom: "20px" }}>
+              File name: {result.videoName}
+            </h3>
+            <h3 style={{ marginBottom: "10px" }}>
+              Angle between knees and hip: {result.kneeHipAngle}
+            </h3>
+            <h3 style={{ marginBottom: "10px" }}>
+              Angle between hip and chest: {result.hipChestAngle}
+            </h3>
+            <h3 style={{ marginBottom: "10px" }}>
+              Angle between chest and arms: {result.chestArmAngle}
+            </h3>
+            <h3 style={{ marginBottom: "10px" }}>
+              Angle difference between arms: {result.armsAngleDiff}
+            </h3>
+            <h3 style={{ marginBottom: "10px" }}>
+              Angle difference between knees: {result.kneesAngleDiff}
+            </h3>
+          </div>
+        )}
       </Paper>
       <Button
         variant="contained"
         color="secondary"
         size="large"
-        fullWidth="true"
+        fullWidth={true}
         style={{ marginTop: "20px" }}
         disabled={result && Object.keys(result).length === 0}
+        onClick={handleDialogClickOpen}
       >
         Save Results
       </Button>
+
+      {/* dialog form for filling data information */}
+      <Dialog
+        open={dialogOpen}
+        onClose={handleDialogClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogTitle id="form-dialog-title">
+          <h3>Data Information</h3>
+        </DialogTitle>
+        <form onSubmit={handleDialogCloseAndSave}>
+          <DialogContent>
+            <DialogContentText>
+              Please fill in the following data information before saving:
+            </DialogContentText>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="athlete"
+              name="athlete"
+              label="Athlete Name"
+              onChange={handleDialogTextChange}
+              value={athlete}
+              fullWidth
+            />
+            <TextField
+              id="date"
+              name="date"
+              label="Date"
+              type="date"
+              className={classes.textField}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              // value={date}
+              onChange={handleDialogTextChange}
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="trick"
+              name="trick"
+              label="Trick Name"
+              value={trick}
+              onChange={handleDialogTextChange}
+              fullWidth
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleDialogClose} color="secondary">
+              Cancel
+            </Button>
+            <Button color="primary" type="submit">
+              Save
+            </Button>
+          </DialogActions>
+        </form>
+      </Dialog>
+
+      {/* Snackbar for showing saved successfully message */}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+      >
+        <Alert onClose={handleSnackbarClose} severity="success">
+          Saved successfully onto the data table!
+        </Alert>
+      </Snackbar>
     </div>
   );
-}
+});
 
 export default FileDataDisplay;
