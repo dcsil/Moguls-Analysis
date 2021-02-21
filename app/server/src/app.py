@@ -2,8 +2,8 @@ from flask import Flask, request, jsonify
 import os
 from typing import Dict
 
-app = Flask(__name__, static_url_path='')
-# app = Flask(__name__, static_folder="../static")
+# app = Flask(__name__, static_url_path='')
+app = Flask(__name__, static_url_path='', static_folder="../../client/build/")
 
 DirPATH = os.path.abspath(os.path.dirname(__name__))
 
