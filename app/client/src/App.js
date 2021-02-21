@@ -1,7 +1,15 @@
+import React from "react";
 import "./App.css";
+import Header from "./components/Header";
+import Analyzer from "./components/Analyzer";
 
 function App() {
-  return <h1>Hello World!</h1>;
+  return (
+    <div>
+      <Header />
+      <Analyzer />
+    </div>
+  );
 }
 
 export default App;
