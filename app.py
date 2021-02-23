@@ -74,8 +74,10 @@ def add_data():
     if result:
         response = make_response(str(result))
         response.mimetype = 'text/plain'
-        return response
-    return "", 500
+        return response, 200
+    response = make_response("Internal Server or Database Error: Add failed")
+    response.mimetype = 'text/plain'
+    return response, 500
 
 
 @app.route('/deleteData/<record_id>', methods=['DELETE'])
