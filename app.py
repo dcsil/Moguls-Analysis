@@ -1,9 +1,15 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, make_response, jsonify
+from flask_pymongo import PyMongo
 import os
 from typing import Dict
 
 # app = Flask(__name__, static_url_path='')
 app = Flask(__name__, static_url_path='', static_folder="./client/build/")
+
+# set up MongoDB
+app.config["MONGO_URI"] = "mongodb+srv://491:454491@491.kqgyf.mongodb.net/moguls?retryWrites=true&w=majority"
+mongo = PyMongo(app)
+
 
 DirPATH = os.path.abspath(os.path.dirname(__name__))
 
@@ -48,7 +54,24 @@ def get_all_data():
 
 @app.route('/addData', methods=['POST'])
 def add_data():
-    pass
+    # check received data
+    if not request.data:
+        response = make_response("Bad Request: Server did not received any data")
+        response.mimetype = 'text/plain'
+        return response, 400
+    if not request.json:
+        response = make_response("Bad Request: Server received empty Json")
+        response.mimetype = 'text/plain'
+        return response, 400
+
+    table_name = "test"   # for early develop only
+    collection = mongo.db[table_name]
+    result = collection.insert(request.json)
+    if result:
+        response = make_response(str(result))
+        response.mimetype = 'text/plain'
+        return response
+    return "", 500
 
 
 @app.route('/deleteData', methods=['POST'])
