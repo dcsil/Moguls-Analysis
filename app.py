@@ -1,3 +1,4 @@
+from bson import ObjectId
 from flask import Flask, request, make_response, jsonify
 from flask_pymongo import PyMongo
 import os
@@ -77,9 +78,23 @@ def add_data():
     return "", 500
 
 
-@app.route('/deleteData', methods=['POST'])
-def delete_data():
-    pass
+@app.route('/deleteData/<record_id>', methods=['DELETE'])
+def delete_data(record_id):
+    # find target collection
+    table_name = "test"   # for early develop only
+    collection = mongo.db[table_name]
+
+    # delete from collection
+    result = collection.remove({'_id': ObjectId(record_id)})
+    if result['ok']:
+        if result['n']:
+            return "", 200
+        response = make_response("Bad Request: Server did not find the record to delete")
+        response.mimetype = 'text/plain'
+        return response, 400
+    response = make_response("Internal Server or Database Error: Delete failed")
+    response.mimetype = 'text/plain'
+    return response, 500
 
 
 if __name__ == '__main__':
