@@ -64,8 +64,11 @@ def add_data():
         response.mimetype = 'text/plain'
         return response, 400
 
+    # find target collection
     table_name = "test"   # for early develop only
     collection = mongo.db[table_name]
+
+    # add to target collection and perform error checking
     result = collection.insert(request.json)
     if result:
         response = make_response(str(result))
