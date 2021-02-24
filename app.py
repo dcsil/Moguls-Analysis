@@ -50,7 +50,21 @@ def image_preprocess():
 # TODO: link database and communicate with database
 @app.route('/getAllData', methods=['GET'])
 def get_all_data():
-    pass
+    # find target collection
+    table_name = "test"   # for early develop only
+    collection = mongo.db[table_name]
+
+    # get all records
+    records = collection.find({})
+    if records:
+        data = {}
+        for item in records:
+            item['_id'] = str(item['_id'])
+            data[item['_id']] = item
+        return jsonify(data), 200
+    response = make_response("Internal Server or Database Error: Failed to get all records")
+    response.mimetype = 'text/plain'
+    return response, 500
 
 
 @app.route('/addData', methods=['POST'])
