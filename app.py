@@ -101,9 +101,10 @@ def delete_data(record_id):
     collection = mongo.db[table_name]
 
     # delete from collection
-    result = collection.remove({'_id': ObjectId(record_id)})
-    if result['ok']:
-        if result['n']:
+    result = collection.delete_one({'_id': ObjectId(record_id)})
+
+    if result and result.acknowledged:
+        if result.deleted_count:
             return "", 200
         response = make_response("Bad Request: Server did not find the record to delete")
         response.mimetype = 'text/plain'
