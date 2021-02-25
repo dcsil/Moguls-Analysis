@@ -5,8 +5,5 @@ This is a repository for our Moguls Analysis web app which is available at https
 
 ### Workflow Status
 master:  
-![Server workflow status badge for master branch](https://github.com/dcsil/Moguls-Analysis/workflows/Python%20application/badge.svg?branch=master)
-
-dev:  
-![Server workflow status badge for dev branch](https://github.com/dcsil/Moguls-Analysis/workflows/Python%20application/badge.svg?branch=dev)
-
+[![Backend Server CI](https://github.com/dcsil/Moguls-Analysis/actions/workflows/python-app.yml/badge.svg?branch=master)](https://github.com/dcsil/Moguls-Analysis/actions/workflows/python-app.yml)
+[![Front-end CI](https://github.com/dcsil/Moguls-Analysis/actions/workflows/front-end.yml/badge.svg?branch=master)](https://github.com/dcsil/Moguls-Analysis/actions/workflows/front-end.yml)
