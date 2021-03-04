@@ -5,22 +5,22 @@
 
 install_homebrew() {
   if [ "$(uname)" == "Darwin" ]; then
-    echo "Installing Homebrew"
+    echo "==================== Installing Homebrew ===================="
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
 }
 
 install_node() {
-  echo "Installing NodeJS"
+  echo "==================== Installing NodeJS ===================="
   if [ "$(uname)" == "Darwin" ]; then
     brew install node
   else
-    sudo apt-get install nodejs
+    sudo apt-get install nodejs npm
   fi
 }
 
 install_python3() {
-  echo "Installing Python 3"
+  echo "==================== Installing Python 3 ===================="
   if [ "$(uname)" == "Darwin" ]; then
     brew install python3
   else
@@ -28,13 +28,22 @@ install_python3() {
   fi
 }
 
+install_pip3() {
+  echo "==================== Installing Python 3 ===================="
+  if [ "$(uname)" == "Darwin" ]; then
+    curl -O https://bootstrap.pypa.io/get-pip.py
+    sudo python3 get-pip.py
+  else
+    sudo apt-get install python3-pip
+  fi
+}
 
 
 if [ "$(uname)" == "Darwin" ]; then
     # install Homebrew for mac if it is not already installed
     command -v brew > /dev/null 2>&1
     if [ $? -eq 0 ]; then
-    echo "Homebrew already installed"
+    echo "==================== Homebrew already installed ===================="
     else
     install_homebrew # No-ops in Linux
     fi
@@ -46,7 +55,7 @@ fi
 # install NodeJS if it is not already installed
 command -v node > /dev/null 2>&1
 if [ $? -eq 0 ]; then
-  echo "node already installed"
+  echo "==================== NodeJS already installed===================="
 else
   install_node
 fi
@@ -54,7 +63,15 @@ fi
 # install Python 3 if it is not already installed
 command -v python3 > /dev/null 2>&1
 if [ $? -eq 0 ]; then
-  echo "Python 3 already installed"
+  echo "==================== Python 3 already installed ===================="
 else
   install_python3
+fi
+
+# install pip if it is not already installed
+command -v pip3 > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+  echo "==================== pip3 already installed ===================="
+else
+  install_pip3
 fi
