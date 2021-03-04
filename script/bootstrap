@@ -1,0 +1,9 @@
+DIR=$PWD
+
+echo "==================== Dev Environment Setup ===================="
+$DIR/env_setup
+
+echo "==================== App Setup ===================="
+$DIR/app_setup
+
+echo "==================== Setup Success! ===================="

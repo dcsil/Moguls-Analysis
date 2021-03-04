@@ -1,0 +1,60 @@
+# This script will do the setup for dev env
+# A lot of command is from from learn_software_app/bin/dependencies, 
+# Credit to Julian Nadeau, thank you for letting us use it
+
+
+install_homebrew() {
+  if [ "$(uname)" == "Darwin" ]; then
+    echo "Installing Homebrew"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  fi
+}
+
+install_node() {
+  echo "Installing NodeJS"
+  if [ "$(uname)" == "Darwin" ]; then
+    brew install node
+  else
+    sudo apt-get install nodejs
+  fi
+}
+
+install_python3() {
+  echo "Installing Python 3"
+  if [ "$(uname)" == "Darwin" ]; then
+    brew install python3
+  else
+    sudo apt-get install python3.8 python3-pip
+  fi
+}
+
+
+
+if [ "$(uname)" == "Darwin" ]; then
+    # install Homebrew for mac if it is not already installed
+    command -v brew > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+    echo "Homebrew already installed"
+    else
+    install_homebrew # No-ops in Linux
+    fi
+else
+    # get newest versions if package lists
+    sudo apt-get update
+fi
+
+# install NodeJS if it is not already installed
+command -v node > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+  echo "node already installed"
+else
+  install_node
+fi
+
+# install Python 3 if it is not already installed
+command -v python3 > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+  echo "Python 3 already installed"
+else
+  install_python3
+fi
