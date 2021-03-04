@@ -10,6 +10,8 @@ echo "==================== Test Server ===================="
 python3 test_server.py 
 
 echo "==================== Test Client ===================="
-
+cd ..
+cd client
+npm run test
 
 echo "==================== All Tests Completed ===================="
