@@ -1,4 +1,5 @@
-# This script will do the setup for our learn_software_app
+# This script will do the setup for our Moguls Analysis app
+
 echo "==================== install NodeJS dependencies for client ===================="
 cd ..
 cd client
