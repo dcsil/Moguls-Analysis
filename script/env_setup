@@ -29,7 +29,7 @@ install_python3() {
 }
 
 install_pip3() {
-  echo "==================== Installing Python 3 ===================="
+  echo "==================== Installing pip 3 ===================="
   if [ "$(uname)" == "Darwin" ]; then
     curl -O https://bootstrap.pypa.io/get-pip.py
     sudo python3 get-pip.py
