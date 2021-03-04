@@ -1,0 +1,15 @@
+# This script will run all the tests for our Moguls Analysis app
+
+cd ..
+cd unittest
+
+echo "==================== Test Database Operations ===================="
+python3 test_db.py 
+
+echo "==================== Test Server ===================="
+python3 test_server.py 
+
+echo "==================== Test Client ===================="
+
+
+echo "==================== All Tests Completed ===================="
