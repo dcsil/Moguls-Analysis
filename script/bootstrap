@@ -1,3 +1,6 @@
+# enter the directory that bootstrap is in
+cd "$(dirname "$(find . -name 'bootstrap')")"
+# get current directory
 DIR=$PWD
 
 echo "==================== Dev Environment Setup ===================="

@@ -1,6 +1,7 @@
 # This script will do the setup for our Moguls Analysis app
 
 echo "==================== install NodeJS dependencies for client ===================="
+cd "$(dirname "$(find . -name 'app_setup')")"
 cd ..
 cd client
 pwd
