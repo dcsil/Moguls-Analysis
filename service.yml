@@ -1,7 +1,11 @@
 tools:
   exceptions: 
-  logging: 
-  ci: https://github.com/dcsil/Moguls-Analysis/actions
+    frontend: https://sentry.io/organizations/dcsil/issues/?project=5662565
+    backend: https://sentry.io/organizations/dcsil/issues/?project=5603815 
+  logging: ./app.log
+  ci:
+    frontend: https://github.com/dcsil/Moguls-Analysis/blob/master/.github/workflows/front-end.yml
+    backend: https://github.com/dcsil/Moguls-Analysis/blob/master/.github/workflows/python-app.yml
 
 services:
   production: https://moguls-analysis.herokuapp.com/

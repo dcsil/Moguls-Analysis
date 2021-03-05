@@ -1,11 +1,30 @@
+import sentry_sdk
+from sentry_sdk.integrations.flask import FlaskIntegration
 from bson import ObjectId
 from flask import Flask, request, make_response, jsonify
 from flask_pymongo import PyMongo
 import os
+import logging
 from typing import Dict
 
-# app = Flask(__name__, static_url_path='')
+# init sentry to track errors and exceptions
+sentry_sdk.init(
+    dsn="https://1382a32a42344fc1bc78fb00bdabea5d@o358880.ingest.sentry.io/5603815",
+    integrations=[FlaskIntegration()],
+    traces_sample_rate=1.0
+)
+
 app = Flask(__name__, static_url_path='', static_folder="./client/build/")
+
+
+# logging 
+app.logger.setLevel(logging.DEBUG) 
+handler = logging.FileHandler('app.log', encoding='UTF-8')
+logging_format = logging.Formatter(
+            '%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s')
+handler.setFormatter(logging_format)
+app.logger.addHandler(handler)
+app.logger.info("========== Logging Started ==========")
 
 # set up MongoDB
 app.config["MONGO_URI"] = "mongodb+srv://491:454491@491.kqgyf.mongodb.net/moguls?retryWrites=true&w=majority"
@@ -62,7 +81,9 @@ def get_all_data():
             item['_id'] = str(item['_id'])
             data[item['_id']] = item
         return jsonify(data), 200
-    response = make_response("Internal Server or Database Error: Failed to get all records")
+    error_msg = "Internal Server or Database Error: Failed to get all records"
+    app.logger.error(error_msg)
+    response = make_response(error_msg)
     response.mimetype = 'text/plain'
     return response, 500
 
@@ -89,7 +110,9 @@ def add_data():
         response = make_response(str(result))
         response.mimetype = 'text/plain'
         return response, 200
-    response = make_response("Internal Server or Database Error: Add failed")
+    error_msg = "Internal Server or Database Error: Add failed"
+    app.logger.error(error_msg)
+    response = make_response(error_msg)
     response.mimetype = 'text/plain'
     return response, 500
 
@@ -109,9 +132,18 @@ def delete_data(record_id):
         response = make_response("Bad Request: Server did not find the record to delete")
         response.mimetype = 'text/plain'
         return response, 400
-    response = make_response("Internal Server or Database Error: Delete failed")
+    error_msg = "Internal Server or Database Error: Delete failed"
+    app.logger.error(error_msg)
+    response = make_response(error_msg)
     response.mimetype = 'text/plain'
     return response, 500
+
+
+# verify sentry is working
+@app.route('/debug-sentry')
+def trigger_error():
+    app.logger.debug("This error is used to verify sentry is working")
+    division_by_zero = 1 / 0
 
 
 if __name__ == '__main__':

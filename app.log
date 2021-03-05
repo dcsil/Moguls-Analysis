@@ -1,0 +1,20 @@
+2021-03-04 23:48:07,208 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-04 23:48:42,205 - DEBUG - app.py - trigger_error - 145 - This error is used to verify sentry is working
+2021-03-04 23:48:42,317 - ERROR - app.py - log_exception - 1891 - Exception on /debug-sentry [GET]
+Traceback (most recent call last):
+  File "I:\programming\454 + 491\Moguls-Analysis\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "I:\programming\454 + 491\Moguls-Analysis\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "I:\programming\454 + 491\Moguls-Analysis\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "I:\programming\454 + 491\Moguls-Analysis\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "I:\programming\454 + 491\Moguls-Analysis\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "I:\programming\454 + 491\Moguls-Analysis\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File ".\app.py", line 146, in trigger_error
+    division_by_zero = 1 / 0
+ZeroDivisionError: division by zero
+2021-03-04 23:48:57,148 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
