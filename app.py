@@ -1,10 +1,17 @@
+import sentry_sdk
+from sentry_sdk.integrations.flask import FlaskIntegration
 from bson import ObjectId
 from flask import Flask, request, make_response, jsonify
 from flask_pymongo import PyMongo
 import os
 from typing import Dict
 
-# app = Flask(__name__, static_url_path='')
+sentry_sdk.init(
+    dsn="https://1382a32a42344fc1bc78fb00bdabea5d@o358880.ingest.sentry.io/5603815",
+    integrations=[FlaskIntegration()],
+    traces_sample_rate=1.0
+)
+
 app = Flask(__name__, static_url_path='', static_folder="./client/build/")
 
 # set up MongoDB
