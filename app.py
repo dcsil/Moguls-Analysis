@@ -121,5 +121,11 @@ def delete_data(record_id):
     return response, 500
 
 
+# verify sentry is working
+@app.route('/debug-sentry')
+def trigger_error():
+    division_by_zero = 1 / 0
+
+
 if __name__ == '__main__':
     app.run()
