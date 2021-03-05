@@ -1,0 +1,17 @@
+# This script will run all the tests for our Moguls Analysis app
+cd "$(dirname "$(find . -name 'run_tests')")"
+cd ..
+cd unittest
+
+echo "==================== Test Database Operations ===================="
+python3 test_db.py 
+
+echo "==================== Test Server ===================="
+python3 test_server.py 
+
+echo "==================== Test Client ===================="
+cd ..
+cd client
+npm run test
+
+echo "==================== All Tests Completed ===================="

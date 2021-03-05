@@ -1,0 +1,16 @@
+tools:
+  exceptions: 
+  logging: 
+  ci: https://github.com/dcsil/Moguls-Analysis/actions
+
+services:
+  production: https://moguls-analysis.herokuapp.com/
+
+docs:
+  getting_started: https://github.com/dcsil/Moguls-Analysis
+  
+commands:
+  bootstrap: script/bootstrap
+  database: https://cloud.mongodb.com/v2/60346be4c3b9857881e2b62d#clusters/detail/491
+  server: python3 app.py
+  test: script/run_tests

@@ -1,0 +1,15 @@
+# This script will do the setup for our Moguls Analysis app
+
+echo "==================== install NodeJS dependencies for client ===================="
+cd "$(dirname "$(find . -name 'app_setup')")"
+cd ..
+cd client
+pwd
+npm install
+echo "==================== built client ===================="
+npm run build
+
+echo "==================== install Python dependencies for server ===================="
+cd ..
+pwd
+pip3 install -r requirements.txt
