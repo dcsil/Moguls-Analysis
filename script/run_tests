@@ -1,5 +1,5 @@
 # This script will run all the tests for our Moguls Analysis app
-
+cd "$(dirname "$(find . -name 'run_tests')")"
 cd ..
 cd unittest
 
