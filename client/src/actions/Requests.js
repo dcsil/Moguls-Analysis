@@ -1,4 +1,4 @@
-export const getAllDate = () => {
+export const getAllDate = (data) => {
     const request = new Request("/getAllDate", {
         method: "GET",
         body: JSON.stringify(data),
