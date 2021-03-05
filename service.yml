@@ -2,7 +2,7 @@ tools:
   exceptions: 
     frontend: https://sentry.io/organizations/dcsil/issues/?project=5662565
     backend: https://sentry.io/organizations/dcsil/issues/?project=5603815 
-  logging: 
+  logging: ./app.log
   ci:
     frontend: https://github.com/dcsil/Moguls-Analysis/blob/master/.github/workflows/front-end.yml
     backend: https://github.com/dcsil/Moguls-Analysis/blob/master/.github/workflows/python-app.yml
