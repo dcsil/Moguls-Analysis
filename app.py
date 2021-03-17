@@ -32,6 +32,7 @@ mongo = PyMongo(app)
 
 
 DirPATH = os.path.abspath(os.path.dirname(__name__))
+ALLOWED_EXTENSIONS = {'mp4', 'mkv'}
 
 
 @app.route('/')
@@ -42,10 +43,19 @@ def index():
 
 @app.route('/videoUpload', methods=['POST'])
 def image_preprocess():
-    # save the video to temp folder for processing
+    # receive video file
     video = request.files['video']
-    path = DirPATH + "/temp/"
-    file_path = path + video.filename
+    
+    # check for file type
+    if '.' not in video.filename or video.filename.split('.')[1] not in ALLOWED_EXTENSIONS:
+        error_msg = "Bad Request: Uploaded file type is not supported."
+        app.logger.error(error_msg)
+        response = make_response(error_msg)
+        response.mimetype = 'text/plain'
+        return response, 400
+
+    # save the video to temp folder for processing
+    file_path = DirPATH + "/temp/" + video.filename
     video.save(file_path)
 
     # TODO: using machine learning and computer vision to process video
@@ -63,10 +73,9 @@ def image_preprocess():
         'kneeAngleDiff': 8
     }
 
-    return jsonify(data)
+    return jsonify(data), 200
 
 
-# TODO: link database and communicate with database
 @app.route('/getAllData', methods=['GET'])
 def get_all_data():
     # find target collection
