@@ -5,6 +5,7 @@ import ReactPlayer from "react-player";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import { uploadVideo } from "../action/fetch";
 
 // reference code:
 // https://www.educative.io/edpresso/file-upload-in-react
@@ -47,16 +48,29 @@ function FileUpload(props) {
   });
 
   // Handles file upload event and updates state
-  function handleUpload(event) {
-    setFile(event.target.files[0]);
+  function handleUpload() {
     // TODO: Add code here to upload file to server
-    // ...
+    const uploadVideoAndGetResult = async () => {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("filename", file.name);
+      console.log(formData.get("file"));
+      console.log(formData.get("filename"));
+      const resultBack = await uploadVideo(formData);
+      if (resultBack.status === 200) {
+        console.log(resultBack.data);
+        props.onClick({ ...resultBack.data, name: file.name });
+      } else {
+        console.log(resultBack.data);
+      }
+    };
+    uploadVideoAndGetResult();
   }
 
   return (
     <div className={classes.root}>
       <Paper className={classes.paper} {...getRootProps()}>
-        <input {...getInputProps()} />
+        <input {...getInputProps()} name="file" type="file" />
         {file ? (
           <ReactPlayer
             url={videoPath}
@@ -82,15 +96,7 @@ function FileUpload(props) {
         style={{ marginTop: "20px" }}
         disabled={!file}
         onClick={() => {
-          props.onClick({
-            // Some hardcode data for UI tests
-            videoName: file.name,
-            kneeHipAngle: (5.2).toFixed(1),
-            hipChestAngle: (-3).toFixed(1),
-            chestArmAngle: (6.1).toFixed(1),
-            armsAngleDiff: (9.2).toFixed(1),
-            kneesAngleDiff: (8).toFixed(1),
-          });
+          handleUpload();
         }}
       >
         Start Analyze
