@@ -18,3 +18,330 @@ Traceback (most recent call last):
     division_by_zero = 1 / 0
 ZeroDivisionError: division by zero
 2021-03-04 23:48:57,148 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 12:54:26,009 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 12:54:55,036 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 13:07:14,128 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 13:07:59,572 - ERROR - app.py - log_exception - 1890 - Exception on /getAllData [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 89, in get_all_data
+    for item in records:
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1207, in next
+    if len(self.__data) or self._refresh():
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1100, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1816, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1766, in __start_session
+    server_session = self._get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1802, in _get_server_session
+    return self._topology.get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 490, in get_server_session
+    self._select_servers_loop(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 215, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: 491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108), Timeout: 30s, Topology Description: <TopologyDescription id: 6055830954afbb7fe7b54920, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('491-shard-00-00.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-01.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-02.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>]>
+2021-03-20 13:11:46,105 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 13:13:12,561 - ERROR - app.py - log_exception - 1890 - Exception on /getAllData [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 89, in get_all_data
+    for item in records:
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1207, in next
+    if len(self.__data) or self._refresh():
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1100, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1816, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1766, in __start_session
+    server_session = self._get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1802, in _get_server_session
+    return self._topology.get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 490, in get_server_session
+    self._select_servers_loop(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 215, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: 491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108), Timeout: 30s, Topology Description: <TopologyDescription id: 60558414a487b5d0ae2ab104, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('491-shard-00-00.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-01.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-02.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>]>
+2021-03-20 13:14:03,004 - ERROR - app.py - log_exception - 1890 - Exception on /getAllData [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 89, in get_all_data
+    for item in records:
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1207, in next
+    if len(self.__data) or self._refresh():
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1100, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1816, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1766, in __start_session
+    server_session = self._get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1802, in _get_server_session
+    return self._topology.get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 490, in get_server_session
+    self._select_servers_loop(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 215, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: 491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108), Timeout: 30s, Topology Description: <TopologyDescription id: 60558414a487b5d0ae2ab104, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('491-shard-00-00.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-01.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-02.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>]>
+2021-03-20 13:14:41,037 - ERROR - app.py - log_exception - 1890 - Exception on /getAllData [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 89, in get_all_data
+    for item in records:
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1207, in next
+    if len(self.__data) or self._refresh():
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1100, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1816, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1766, in __start_session
+    server_session = self._get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1802, in _get_server_session
+    return self._topology.get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 490, in get_server_session
+    self._select_servers_loop(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 215, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: 491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108), Timeout: 30s, Topology Description: <TopologyDescription id: 60558414a487b5d0ae2ab104, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('491-shard-00-00.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-01.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-02.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>]>
+2021-03-20 13:21:23,426 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 13:22:06,937 - ERROR - app.py - log_exception - 1890 - Exception on /getAllData [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 89, in get_all_data
+    for item in records:
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1207, in next
+    if len(self.__data) or self._refresh():
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1100, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1816, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1766, in __start_session
+    server_session = self._get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1802, in _get_server_session
+    return self._topology.get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 490, in get_server_session
+    self._select_servers_loop(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 215, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: 491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108), Timeout: 30s, Topology Description: <TopologyDescription id: 6055865338900c738132ccef, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('491-shard-00-00.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-01.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-02.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>]>
+2021-03-20 13:22:30,082 - ERROR - app.py - log_exception - 1890 - Exception on /getAllData [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 89, in get_all_data
+    for item in records:
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1207, in next
+    if len(self.__data) or self._refresh():
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1100, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1816, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1766, in __start_session
+    server_session = self._get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1802, in _get_server_session
+    return self._topology.get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 490, in get_server_session
+    self._select_servers_loop(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 215, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: 491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108), Timeout: 30s, Topology Description: <TopologyDescription id: 6055865338900c738132ccef, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('491-shard-00-00.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-01.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-02.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>]>
+2021-03-20 13:22:57,478 - ERROR - app.py - log_exception - 1890 - Exception on /getAllData [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 89, in get_all_data
+    for item in records:
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1207, in next
+    if len(self.__data) or self._refresh():
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1100, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1816, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1766, in __start_session
+    server_session = self._get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1802, in _get_server_session
+    return self._topology.get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 490, in get_server_session
+    self._select_servers_loop(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 215, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: 491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108), Timeout: 30s, Topology Description: <TopologyDescription id: 6055865338900c738132ccef, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('491-shard-00-00.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-01.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-02.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>]>
+2021-03-20 13:29:51,216 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 13:30:38,922 - ERROR - app.py - log_exception - 1890 - Exception on /getAllData [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 89, in get_all_data
+    for item in records:
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1207, in next
+    if len(self.__data) or self._refresh():
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1100, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1816, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1766, in __start_session
+    server_session = self._get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1802, in _get_server_session
+    return self._topology.get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 490, in get_server_session
+    self._select_servers_loop(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 215, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: 491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108), Timeout: 30s, Topology Description: <TopologyDescription id: 6055884f0258194ab513b529, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('491-shard-00-00.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-01.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-02.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>]>
+2021-03-20 13:31:02,887 - ERROR - app.py - log_exception - 1890 - Exception on /getAllData [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 89, in get_all_data
+    for item in records:
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1207, in next
+    if len(self.__data) or self._refresh():
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1100, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1816, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1766, in __start_session
+    server_session = self._get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1802, in _get_server_session
+    return self._topology.get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 490, in get_server_session
+    self._select_servers_loop(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 215, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: 491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108),491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108), Timeout: 30s, Topology Description: <TopologyDescription id: 6055884f0258194ab513b529, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('491-shard-00-00.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-00.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-01.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-01.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>, <ServerDescription ('491-shard-00-02.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-02.kqgyf.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')>]>
+2021-03-20 13:34:25,751 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 13:40:03,662 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 14:20:10,434 - ERROR - app.py - log_exception - 1890 - Exception on /getAllData [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 89, in get_all_data
+    for item in records:
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1207, in next
+    if len(self.__data) or self._refresh():
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/cursor.py", line 1100, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1816, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1766, in __start_session
+    server_session = self._get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/mongo_client.py", line 1802, in _get_server_session
+    return self._topology.get_server_session()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 490, in get_server_session
+    self._select_servers_loop(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pymongo/topology.py", line 215, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: 491-shard-00-02.kqgyf.mongodb.net:27017: [Errno 61] Connection refused,491-shard-00-01.kqgyf.mongodb.net:27017: [Errno 61] Connection refused,491-shard-00-00.kqgyf.mongodb.net:27017: [Errno 61] Connection refused, Timeout: 30s, Topology Description: <TopologyDescription id: 60558ab30cead8792f8aa54c, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('491-shard-00-00.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-00.kqgyf.mongodb.net:27017: [Errno 61] Connection refused')>, <ServerDescription ('491-shard-00-01.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-01.kqgyf.mongodb.net:27017: [Errno 61] Connection refused')>, <ServerDescription ('491-shard-00-02.kqgyf.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('491-shard-00-02.kqgyf.mongodb.net:27017: [Errno 61] Connection refused')>]>
+2021-03-20 14:20:26,095 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 14:44:14,628 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 14:44:46,611 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 14:50:20,850 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 15:02:02,070 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 15:03:33,245 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 15:07:30,880 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 15:09:25,470 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 15:13:35,476 - INFO - app.py - <module> - 27 - ========== Logging Started ==========

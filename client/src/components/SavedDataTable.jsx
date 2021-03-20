@@ -3,6 +3,7 @@ import React, {
   forwardRef,
   useImperativeHandle,
   useRef,
+  useEffect,
 } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
@@ -27,6 +28,9 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import TableData from "./TableData";
 import FilterGrid from "./FilterGrid";
+
+import { getAllData } from "../action/fetch";
+import axios from "axios";
 
 const { data: rawData } = TableData;
 
@@ -340,6 +344,14 @@ const DataTable = forwardRef((props, ref) => {
       });
     },
   }));
+
+  useEffect(() => {
+    const setTableData = async () => {
+      const resultBack = await getAllData();
+      console.log(resultBack.data);
+    };
+    setTableData();
+  }, []);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
