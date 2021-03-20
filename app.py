@@ -47,17 +47,17 @@ def image_preprocess():
     print(request.files.to_dict())
     video = request.files['file']
 
-    # # check for file type
-    # if '.' not in video.filename or video.filename.split('.')[1] not in ALLOWED_EXTENSIONS:
-    #     error_msg = "Bad Request: Uploaded file type is not supported."
-    #     app.logger.error(error_msg)
-    #     response = make_response(error_msg)
-    #     response.mimetype = 'text/plain'
-    #     return response, 400
+    check for file type
+    if '.' not in video.filename or video.filename.split('.')[1] not in ALLOWED_EXTENSIONS:
+        error_msg = "Bad Request: Uploaded file type is not supported."
+        app.logger.error(error_msg)
+        response = make_response(error_msg)
+        response.mimetype = 'text/plain'
+        return response, 400
 
-    # # save the video to temp folder for processing
-    # file_path = DirPATH + "/temp/" + video.filename
-    # video.save(file_path)
+    # save the video to temp folder for processing
+    file_path = DirPATH + "\\temp\\" + video.filename
+    video.save(file_path)
 
     # TODO: using machine learning and computer vision to process video
 
