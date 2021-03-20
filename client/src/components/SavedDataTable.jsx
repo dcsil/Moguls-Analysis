@@ -315,10 +315,11 @@ const DataTable = forwardRef((props, ref) => {
 
   useEffect(() => {
     const setTableData = async () => {
-      const dataResult = await getAllData();
-      if (dataResult.status === 200) {
-        console.log(dataResult.data);
-        setRows(Object.values(dataResult.data));
+      const resultBack = await getAllData();
+      if (resultBack.status === 200) {
+        console.log(resultBack.data);
+        setRows(Object.values(resultBack.data));
+        console.log(resultBack.data);
       }
     };
     setTableData();

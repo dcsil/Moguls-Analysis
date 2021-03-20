@@ -20,13 +20,16 @@ export const uploadVideo = (data) => {
 
 /** get all saved data from database */
 export const getAllData = () => {
-  return axios("/getAllData", {
-    method: "GET",
-    headers: {
-      Accept: "application/json, text/plain, */*",
-      "Content-Type": "application/json",
-    },
-  });
+  return axios
+    .get("/getAllData", {
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+    })
+    .catch((error) => {
+      return error.response;
+    });
 };
 
 /** Save a new data record in the database
@@ -35,16 +38,13 @@ export const getAllData = () => {
  */
 
 export const saveData = (data) => {
-  axios
+  return axios
     .post("/addData", data, {
       headers: {
         "Content-Type": "application/json",
       },
     })
-    .then((response) => {
-      console.log(response);
-    })
     .catch((error) => {
-      console.log(error.response);
+      return error.response;
     });
 };

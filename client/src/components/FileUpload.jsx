@@ -56,12 +56,12 @@ function FileUpload(props) {
       formData.append("filename", file.name);
       console.log(formData.get("file"));
       console.log(formData.get("filename"));
-      try {
-        const resultBack = await uploadVideo(formData);
+      const resultBack = await uploadVideo(formData);
+      if (resultBack.status === 200) {
         console.log(resultBack.data);
         props.onClick({ ...resultBack.data, name: file.name });
-      } catch (err) {
-        console.log(err);
+      } else {
+        console.log(resultBack.data);
       }
     };
     uploadVideoAndGetResult();

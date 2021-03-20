@@ -29,13 +29,13 @@ export default function Analyzer() {
 
   function handleNewResultSave(newResult) {
     const saveDataToDatabase = async () => {
-      try {
-        const resultBack = await saveData(newResult);
+      const resultBack = await saveData(newResult);
+      if (resultBack.status === 200) {
         console.log("succcess");
         console.log(resultBack.data);
         // TODO: refresh table data
-      } catch (err) {
-        console.log(err);
+      } else {
+        console.log(resultBack.data);
       }
     };
     saveDataToDatabase();
