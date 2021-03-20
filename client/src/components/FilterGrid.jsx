@@ -39,13 +39,13 @@ const filterHeadCells = [
     flex: 1.5,
   },
   {
-    field: "armsAngleDiff",
+    field: "armAngleDiff",
     type: "number",
     headerName: "Arms Angle Difference",
     flex: 1.5,
   },
   {
-    field: "kneesAngleDiff",
+    field: "kneeAngleDiff",
     type: "number",
     headerName: "Knees Angle Difference",
     flex: 1.5,
@@ -66,8 +66,8 @@ function convertedToFilterRows(rows) {
       kneeHipAngle: row.kneeHipAngle,
       hipChestAngle: row.hipChestAngle,
       chestArmAngle: row.chestArmAngle,
-      armsAngleDiff: row.armsAngleDiff,
-      kneesAngleDiff: row.kneesAngleDiff,
+      armAngleDiff: row.armAngleDiff,
+      kneeAngleDiff: row.kneeAngleDiff,
     };
   });
   return formattedData;

@@ -73,7 +73,6 @@ const FileDataDisplay = forwardRef((props, ref) => {
       name: athlete,
       date: date ? date.replace("-", "/").replace("-", "/") : "",
       trick: trick,
-      _id: math.round(math.random(101, 999)),
     };
     props.handleNewResultSave(newResult);
     setAthlete("");
@@ -125,10 +124,10 @@ const FileDataDisplay = forwardRef((props, ref) => {
               Angle between chest and arms: {result.chestArmAngle}
             </h3>
             <h3 style={{ marginBottom: "10px" }}>
-              Angle difference between arms: {result.armsAngleDiff}
+              Angle difference between arms: {result.armAngleDiff}
             </h3>
             <h3 style={{ marginBottom: "10px" }}>
-              Angle difference between knees: {result.kneesAngleDiff}
+              Angle difference between knees: {result.kneeAngleDiff}
             </h3>
           </div>
         )}

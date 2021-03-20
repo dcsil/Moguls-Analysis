@@ -17,11 +17,11 @@ sentry_sdk.init(
 app = Flask(__name__, static_url_path='', static_folder="./client/build/")
 
 
-# logging 
-app.logger.setLevel(logging.DEBUG) 
+# logging
+app.logger.setLevel(logging.DEBUG)
 handler = logging.FileHandler('app.log', encoding='UTF-8')
 logging_format = logging.Formatter(
-            '%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s')
+    '%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s')
 handler.setFormatter(logging_format)
 app.logger.addHandler(handler)
 app.logger.info("========== Logging Started ==========")
@@ -44,19 +44,20 @@ def index():
 @app.route('/videoUpload', methods=['POST'])
 def image_preprocess():
     # receive video file
-    video = request.files['video']
-    
-    # check for file type
-    if '.' not in video.filename or video.filename.split('.')[1] not in ALLOWED_EXTENSIONS:
-        error_msg = "Bad Request: Uploaded file type is not supported."
-        app.logger.error(error_msg)
-        response = make_response(error_msg)
-        response.mimetype = 'text/plain'
-        return response, 400
+    print(request.files.to_dict())
+    video = request.files['file']
 
-    # save the video to temp folder for processing
-    file_path = DirPATH + "/temp/" + video.filename
-    video.save(file_path)
+    # # check for file type
+    # if '.' not in video.filename or video.filename.split('.')[1] not in ALLOWED_EXTENSIONS:
+    #     error_msg = "Bad Request: Uploaded file type is not supported."
+    #     app.logger.error(error_msg)
+    #     response = make_response(error_msg)
+    #     response.mimetype = 'text/plain'
+    #     return response, 400
+
+    # # save the video to temp folder for processing
+    # file_path = DirPATH + "/temp/" + video.filename
+    # video.save(file_path)
 
     # TODO: using machine learning and computer vision to process video
 
@@ -101,7 +102,8 @@ def get_all_data():
 def add_data():
     # check received data
     if not request.data:
-        response = make_response("Bad Request: Server did not received any data")
+        response = make_response(
+            "Bad Request: Server did not received any data")
         response.mimetype = 'text/plain'
         return response, 400
     if not request.json:
@@ -138,7 +140,8 @@ def delete_data(record_id):
     if result and result.acknowledged:
         if result.deleted_count:
             return "", 200
-        response = make_response("Bad Request: Server did not find the record to delete")
+        response = make_response(
+            "Bad Request: Server did not find the record to delete")
         response.mimetype = 'text/plain'
         return response, 400
     error_msg = "Internal Server or Database Error: Delete failed"

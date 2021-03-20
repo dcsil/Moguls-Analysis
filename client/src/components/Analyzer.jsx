@@ -6,6 +6,8 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import SavedDataTable from "./SavedDataTable";
 
+import { saveData } from "../action/fetch";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -26,7 +28,17 @@ export default function Analyzer() {
   }
 
   function handleNewResultSave(newResult) {
-    resultSaveChild.current.addSavedResult(newResult);
+    const saveDataToDatabase = async () => {
+      try {
+        const resultBack = await saveData(newResult);
+        console.log("succcess");
+        console.log(resultBack.data);
+        // TODO: refresh table data
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    saveDataToDatabase();
   }
 
   return (
