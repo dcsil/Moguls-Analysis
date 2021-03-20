@@ -345,3 +345,12 @@ pymongo.errors.ServerSelectionTimeoutError: 491-shard-00-02.kqgyf.mongodb.net:27
 2021-03-20 15:07:30,880 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
 2021-03-20 15:09:25,470 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
 2021-03-20 15:13:35,476 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 15:32:18,735 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 15:38:10,546 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 15:39:46,196 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 15:40:37,766 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 15:43:20,187 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 15:44:48,943 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 15:47:34,541 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 15:50:14,968 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-20 15:51:21,914 - INFO - app.py - <module> - 27 - ========== Logging Started ==========

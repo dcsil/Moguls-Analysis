@@ -26,41 +26,9 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
-import TableData from "./TableData";
 import FilterGrid from "./FilterGrid";
 
 import { getAllData } from "../action/fetch";
-import axios from "axios";
-
-const { data: rawData } = TableData;
-
-function createData(
-  _id,
-  name,
-  date,
-  trick,
-  kneeHipAngle,
-  hipChestAngle,
-  chestArmAngle,
-  armsAngleDiff,
-  kneesAngleDiff
-) {
-  return {
-    _id,
-    name,
-    date,
-    trick,
-    kneeHipAngle,
-    hipChestAngle,
-    chestArmAngle,
-    armsAngleDiff,
-    kneesAngleDiff,
-  };
-}
-
-const rowsData = rawData.map((data) => {
-  return createData(...data);
-});
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -135,7 +103,7 @@ const headCells = [
       "Angle between chest and arm relative to 180° (a value less than 0 indicates an angle less than 180°) ",
   },
   {
-    id: "armsAngleDiff",
+    id: "armAngleDiff",
     numeric: true,
     disablePadding: false,
     label: "Arms Angle Difference",
@@ -143,7 +111,7 @@ const headCells = [
       "Angle difference between two arms (the value is absolute difference so greater than or equal to 0)",
   },
   {
-    id: "kneesAngleDiff",
+    id: "kneeAngleDiff",
     numeric: true,
     disablePadding: false,
     label: "Knees Angle Difference",
@@ -328,7 +296,7 @@ const DataTable = forwardRef((props, ref) => {
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [rows, setRows] = useState(rowsData);
+  const [rows, setRows] = useState([]);
   const [open, setOpen] = useState(true);
 
   // handler for parent component to add new saved result
@@ -347,8 +315,11 @@ const DataTable = forwardRef((props, ref) => {
 
   useEffect(() => {
     const setTableData = async () => {
-      const resultBack = await getAllData();
-      console.log(resultBack.data);
+      const dataResult = await getAllData();
+      if (dataResult.status === 200) {
+        console.log(dataResult.data);
+        setRows(Object.values(dataResult.data));
+      }
     };
     setTableData();
   }, []);
@@ -490,8 +461,8 @@ const DataTable = forwardRef((props, ref) => {
                       <TableCell align="right">{row.kneeHipAngle}</TableCell>
                       <TableCell align="right">{row.hipChestAngle}</TableCell>
                       <TableCell align="right">{row.chestArmAngle}</TableCell>
-                      <TableCell align="right">{row.armsAngleDiff}</TableCell>
-                      <TableCell align="right">{row.kneesAngleDiff}</TableCell>
+                      <TableCell align="right">{row.armAngleDiff}</TableCell>
+                      <TableCell align="right">{row.kneeAngleDiff}</TableCell>
                     </TableRow>
                   );
                 })}
