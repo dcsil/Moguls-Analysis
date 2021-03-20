@@ -47,7 +47,7 @@ def image_preprocess():
     print(request.files.to_dict())
     video = request.files['file']
 
-    check for file type
+    # check for file type
     if '.' not in video.filename or video.filename.split('.')[1] not in ALLOWED_EXTENSIONS:
         error_msg = "Bad Request: Uploaded file type is not supported."
         app.logger.error(error_msg)
