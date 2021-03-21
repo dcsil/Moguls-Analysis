@@ -16,6 +16,12 @@ export const failure = (content) => {
   };
 };
 
+export const clear = () => {
+  return {
+    type: ACTION_TYPES.CLEAR,
+  };
+};
+
 export const login_success = (username) => {
   return {
     type: ACTION_TYPES.LOGIN_SUCCESS,

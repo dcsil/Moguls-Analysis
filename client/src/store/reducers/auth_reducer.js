@@ -1,8 +1,9 @@
 import * as ACTION_TYPES from "../actions/action_types";
 
 export const initialState = {
-  isAuth: false,
-  username: "",
+  // TODO: change this
+  isAuth: true,
+  username: "Test Username",
 };
 
 export const AuthReducer = (state = initialState, action) => {
@@ -10,19 +11,19 @@ export const AuthReducer = (state = initialState, action) => {
     case ACTION_TYPES.LOGIN_SUCCESS:
       return {
         ...state,
-        is_authenticated: true,
+        isAuth: true,
         username: action.username,
       };
     case ACTION_TYPES.LOGIN_FAILURE:
       return {
         ...state,
-        is_authenticated: false,
+        isAuth: false,
         username: "",
       };
     case ACTION_TYPES.LOGOUT:
       return {
         ...state,
-        is_authenticated: false,
+        isAuth: false,
         username: "",
       };
     default:

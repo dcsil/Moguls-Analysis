@@ -25,6 +25,10 @@ export const MessageReducer = (state = initialState, action) => {
         ...state,
         loading: true,
       };
+    case ACTION_TYPES.CLEAR:
+      return {
+        ...initialState,
+      };
     default:
       return state;
   }
