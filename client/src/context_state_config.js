@@ -3,6 +3,7 @@ import Context from "./utils/context";
 import * as ACTIONS from "./store/actions/actions";
 import * as AuthReducer from "./store/reducers/auth_reducer";
 import * as MessageReducer from "./store/reducers/message_reducer";
+import * as DataReducer from "./store/reducers/data_reducer";
 import Main from "./components/Main";
 
 // import Auth from "./utils/auth";
@@ -48,15 +49,34 @@ const ContextState = () => {
     dispatchMessageReducer(ACTIONS.clear_msg());
   };
 
+  /* Data Reducer */
+  const [stateDataReducer, dispatchDataReducer] = useReducer(
+    DataReducer.MessageReducer,
+    DataReducer.initialState
+  );
+
+  const handleSetData = (data) => {
+    dispatchDataReducer(ACTIONS.set_data(data));
+  };
+
+  const handleAddData = (newData) => {
+    dispatchDataReducer(ACTIONS.add_data(newData));
+  };
+
+  const handleDeleteData = (_id) => {
+    dispatchDataReducer(ACTIONS.set_data(_id));
+  };
+
   return (
     <div>
       <Context.Provider
         value={{
-          //Auth Reducer
+          // Auth Reducer
           authState: stateAuthReducer.isAuth,
           usernameState: stateAuthReducer.username,
           handleUserLogin: (username) => handleLogin(username),
           handleUserLogout: () => handleLogout(),
+          // Message Reducer
           loadingState: stateMessageReducer.loading,
           successState: stateMessageReducer.success,
           messageState: stateMessageReducer.msg,
@@ -66,6 +86,11 @@ const ContextState = () => {
           handleLoading: () => handleLoading(),
           handleClearLoading: () => handleClearLoading(),
           handleClearMessage: () => handleClearMessage(),
+          // Data Reducer
+          dataState: stateDataReducer.allData,
+          handleSetData: (data) => handleSetData(data),
+          handleAddData: (newData) => handleAddData(newData),
+          handleDeleteData: (_id) => handleDeleteData(_id),
         }}
       >
         <Main />

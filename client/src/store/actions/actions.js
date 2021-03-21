@@ -52,3 +52,24 @@ export const loading = () => {
     type: ACTION_TYPES.LOADING,
   };
 };
+
+export const set_data = (data) => {
+  return {
+    type: ACTION_TYPES.SET_DATA,
+    data: data,
+  };
+};
+
+export const add_data = (newData) => {
+  return {
+    type: ACTION_TYPES.ADD_DATA,
+    newData: newData,
+  };
+};
+
+export const delete_data = (_id) => {
+  return {
+    type: ACTION_TYPES.DELETE_DATA,
+    _id: _id,
+  };
+};
