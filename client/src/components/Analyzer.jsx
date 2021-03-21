@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import SavedDataTable from "./SavedDataTable";
 
-import { saveData } from "../action/fetch";
+import { saveData } from "../utils/fetch";
 
 const useStyles = makeStyles((theme) => ({
   root: {

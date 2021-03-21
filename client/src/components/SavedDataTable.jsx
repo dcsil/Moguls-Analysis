@@ -28,7 +28,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import FilterGrid from "./FilterGrid";
 
-import { getAllData } from "../action/fetch";
+import { getAllData } from "../utils/fetch";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {

@@ -5,7 +5,7 @@ import ReactPlayer from "react-player";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import { uploadVideo } from "../action/fetch";
+import { uploadVideo } from "../utils/fetch";
 
 // reference code:
 // https://www.educative.io/edpresso/file-upload-in-react
