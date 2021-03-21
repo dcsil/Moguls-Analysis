@@ -41,11 +41,11 @@ const ContextState = () => {
   };
 
   const handleClearLoading = () => {
-    dispatchMessageReducer(ACTIONS.clear_loading);
+    dispatchMessageReducer(ACTIONS.clear_loading());
   };
 
   const handleClearMessage = () => {
-    dispatchMessageReducer(ACTIONS.clear_msg);
+    dispatchMessageReducer(ACTIONS.clear_msg());
   };
 
   return (
