@@ -10,6 +10,8 @@ export const success = (content) => {
 export const failure = (content) => {
   return {
     type: ACTION_TYPES.FAILURE,
+    success: false,
+    loading: false,
     msg: content,
   };
 };
@@ -30,5 +32,11 @@ export const login_failure = () => {
 export const logout = () => {
   return {
     type: ACTION_TYPES.LOGOUT,
+  };
+};
+
+export const loading = () => {
+  return {
+    type: ACTION_TYPES.LOADING,
   };
 };
