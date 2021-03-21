@@ -3,8 +3,8 @@ import * as ACTION_TYPES from "../actions/action_types";
 export const initialState = {
   loading: false,
   success: true,
-  msg: "This is a test message",
-  msgDisplay: true,
+  msg: "",
+  msgDisplay: false,
 };
 
 export const MessageReducer = (state = initialState, action) => {
@@ -14,6 +14,7 @@ export const MessageReducer = (state = initialState, action) => {
         ...state,
         success: true,
         loading: false,
+        msg: action.msg,
         msgDisplay: true,
       };
     case ACTION_TYPES.FAILURE:
@@ -21,6 +22,7 @@ export const MessageReducer = (state = initialState, action) => {
         ...state,
         success: true,
         loading: false,
+        msg: action.msg,
         msgDisplay: true,
       };
     case ACTION_TYPES.LOADING:
@@ -37,6 +39,7 @@ export const MessageReducer = (state = initialState, action) => {
       return {
         ...state,
         msgDisplay: false,
+        msg: "",
       };
     default:
       return state;

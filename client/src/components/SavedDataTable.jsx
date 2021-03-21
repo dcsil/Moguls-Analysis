@@ -4,6 +4,7 @@ import React, {
   useImperativeHandle,
   useRef,
   useEffect,
+  useContext,
 } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
@@ -27,8 +28,8 @@ import Switch from "@material-ui/core/Switch";
 import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import FilterGrid from "./FilterGrid";
-
 import { getAllData } from "../utils/fetch";
+import Context from "../utils/context";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -288,6 +289,7 @@ const useStyles = makeStyles((theme) => ({
 
 const DataTable = forwardRef((props, ref) => {
   const classes = useStyles();
+  const context = useContext(Context);
   const filterChild = useRef();
 
   const [order, setOrder] = useState("desc");
@@ -315,11 +317,14 @@ const DataTable = forwardRef((props, ref) => {
 
   useEffect(() => {
     const setTableData = async () => {
+      context.handleLoading();
       const resultBack = await getAllData();
+      context.handleClearLoading();
       if (resultBack.status === 200) {
-        console.log(resultBack.data);
         setRows(Object.values(resultBack.data));
         console.log(resultBack.data);
+      } else {
+        context.handleFailure(resultBack.data);
       }
     };
     setTableData();

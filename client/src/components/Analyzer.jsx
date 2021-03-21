@@ -1,11 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import FileUpload from "./FileUpload";
 import FileDataDisplay from "./FileDataDisplay";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import SavedDataTable from "./SavedDataTable";
-
+import Context from "../utils/context";
 import { saveData } from "../utils/fetch";
 
 const useStyles = makeStyles((theme) => ({
@@ -17,6 +17,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Analyzer() {
   const classes = useStyles();
+  const context = useContext(Context);
+
   const [result, setResult] = useState({});
   const resultDisplayChild = useRef();
   const resultSaveChild = useRef();
@@ -30,13 +32,15 @@ export default function Analyzer() {
 
   function handleNewResultSave(newResult) {
     const saveDataToDatabase = async () => {
+      context.handleLoading();
       const resultBack = await saveData(newResult);
+      context.handleClearLoading();
       if (resultBack.status === 200) {
-        console.log("succcess");
+        context.handleSuccess("Data is successfully saved.");
         console.log(resultBack.data);
         // TODO: refresh table data
       } else {
-        console.log(resultBack.data);
+        context.handleFailure(resultBack.data);
       }
     };
     saveDataToDatabase();

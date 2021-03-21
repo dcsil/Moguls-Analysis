@@ -13,14 +13,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-// // import for alert
-// import Snackbar from "@material-ui/core/Snackbar";
-// import MuiAlert from "@material-ui/lab/Alert";
-
-// function Alert(props) {
-//   return <MuiAlert elevation={6} variant="filled" {...props} />;
-// }
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -90,13 +82,6 @@ const FileDataDisplay = forwardRef((props, ref) => {
       setTrick(value);
     }
   };
-
-  // const handleSnackbarClose = (event, reason) => {
-  //   if (reason === "clickaway") {
-  //     return;
-  //   }
-  //   setSnackbarOpen(false);
-  // };
 
   return (
     <div>
@@ -200,17 +185,6 @@ const FileDataDisplay = forwardRef((props, ref) => {
           </DialogActions>
         </form>
       </Dialog>
-
-      {/* // Snackbar for showing saved successfully message
-      <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={6000}
-        onClose={handleSnackbarClose}
-      >
-        <Alert onClose={handleSnackbarClose} severity="success">
-          Saved successfully onto the data table!
-        </Alert>
-      </Snackbar> */}
     </div>
   );
 });
