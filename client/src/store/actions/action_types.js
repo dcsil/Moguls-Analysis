@@ -4,7 +4,9 @@ export const FAILURE = "FAILURE";
 
 export const LOADING = "LOADING";
 
-export const CLEAR = "CLEAR";
+export const CLEAR_LOADING = "CLEAR_LOADING";
+
+export const CLEAR_MSG = "CLEAR_MSG";
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 

@@ -16,9 +16,15 @@ export const failure = (content) => {
   };
 };
 
-export const clear = () => {
+export const clear_loading = () => {
   return {
-    type: ACTION_TYPES.CLEAR,
+    type: ACTION_TYPES.CLEAR_LOADING,
+  };
+};
+
+export const clear_msg = () => {
+  return {
+    type: ACTION_TYPES.CLEAR_MSG,
   };
 };
 

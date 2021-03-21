@@ -40,6 +40,14 @@ const ContextState = () => {
     dispatchMessageReducer(ACTIONS.loading());
   };
 
+  const handleClearLoading = () => {
+    dispatchMessageReducer(ACTIONS.clear_loading);
+  };
+
+  const handleClearMessage = () => {
+    dispatchMessageReducer(ACTIONS.clear_msg);
+  };
+
   return (
     <div>
       <Context.Provider
@@ -51,10 +59,13 @@ const ContextState = () => {
           handleUserLogout: () => handleLogout(),
           loadingState: stateMessageReducer.loading,
           successState: stateMessageReducer.success,
-          messageState: stateMessageReducer.message,
+          messageState: stateMessageReducer.msg,
+          messageDisplayState: stateMessageReducer.msgDisplay,
           handleSuccess: (msg) => handleSuccess(msg),
           handleFailure: (msg) => handleFailure(msg),
           handleLoading: () => handleLoading(),
+          handleClearLoading: () => handleClearLoading(),
+          handleClearMessage: () => handleClearMessage(),
         }}
       >
         <Main />

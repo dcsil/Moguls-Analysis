@@ -13,13 +13,13 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-// import for alert
-import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert from "@material-ui/lab/Alert";
+// // import for alert
+// import Snackbar from "@material-ui/core/Snackbar";
+// import MuiAlert from "@material-ui/lab/Alert";
 
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+// function Alert(props) {
+//   return <MuiAlert elevation={6} variant="filled" {...props} />;
+// }
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,7 +49,7 @@ const FileDataDisplay = forwardRef((props, ref) => {
   const [date, setDate] = useState(null);
   const [trick, setTrick] = useState("");
   const [dialogOpen, setDialogOpen] = React.useState(false);
-  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
+  // const [snackbarOpen, setSnackbarOpen] = React.useState(false);
 
   useImperativeHandle(ref, () => ({
     displayResult(resultObj) {
@@ -78,7 +78,6 @@ const FileDataDisplay = forwardRef((props, ref) => {
     setAthlete("");
     setDate("");
     setTrick("");
-    setSnackbarOpen(true);
   };
 
   const handleDialogTextChange = (event) => {
@@ -92,12 +91,12 @@ const FileDataDisplay = forwardRef((props, ref) => {
     }
   };
 
-  const handleSnackbarClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setSnackbarOpen(false);
-  };
+  // const handleSnackbarClose = (event, reason) => {
+  //   if (reason === "clickaway") {
+  //     return;
+  //   }
+  //   setSnackbarOpen(false);
+  // };
 
   return (
     <div>
@@ -202,7 +201,7 @@ const FileDataDisplay = forwardRef((props, ref) => {
         </form>
       </Dialog>
 
-      {/* Snackbar for showing saved successfully message */}
+      {/* // Snackbar for showing saved successfully message
       <Snackbar
         open={snackbarOpen}
         autoHideDuration={6000}
@@ -211,7 +210,7 @@ const FileDataDisplay = forwardRef((props, ref) => {
         <Alert onClose={handleSnackbarClose} severity="success">
           Saved successfully onto the data table!
         </Alert>
-      </Snackbar>
+      </Snackbar> */}
     </div>
   );
 });
