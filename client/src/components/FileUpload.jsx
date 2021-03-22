@@ -1,11 +1,12 @@
-import React, { useCallback, useState } from "react";
+import React, { useContext, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDropzone } from "react-dropzone";
 import ReactPlayer from "react-player";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import { uploadVideo } from "../action/fetch";
+import { uploadVideo } from "../utils/fetch";
+import Context from "../utils/context";
 
 // reference code:
 // https://www.educative.io/edpresso/file-upload-in-react
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 function FileUpload(props) {
   const classes = useStyles();
+  const context = useContext(Context);
 
   // State to store uploaded file
   const [file, setFile] = useState(null);
@@ -49,19 +51,22 @@ function FileUpload(props) {
 
   // Handles file upload event and updates state
   function handleUpload() {
-    // TODO: Add code here to upload file to server
     const uploadVideoAndGetResult = async () => {
+      context.handleLoading();
       const formData = new FormData();
       formData.append("file", file);
       formData.append("filename", file.name);
       console.log(formData.get("file"));
       console.log(formData.get("filename"));
       const resultBack = await uploadVideo(formData);
+      context.handleClearLoading();
       if (resultBack.status === 200) {
-        console.log(resultBack.data);
+        context.handleSuccess("Metrics are successfully extracted.");
+        // console.log(resultBack.data);
         props.onClick({ ...resultBack.data, name: file.name });
       } else {
-        console.log(resultBack.data);
+        // console.log(resultBack.data);
+        context.handleFailure(resultBack.data);
       }
     };
     uploadVideoAndGetResult();
