@@ -62,8 +62,7 @@ function FileUpload(props) {
       context.handleClearLoading();
       if (resultBack.status === 200) {
         context.handleSuccess("Metrics are successfully extracted.");
-        // console.log(resultBack.data);
-        props.onClick({ ...resultBack.data, name: file.name });
+        props.onClick({ ...resultBack.data, videoName: file.name });
       } else {
         // console.log(resultBack.data);
         context.handleFailure(resultBack.data);
