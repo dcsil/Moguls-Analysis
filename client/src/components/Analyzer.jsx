@@ -1,19 +1,24 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import FileUpload from "./FileUpload";
 import FileDataDisplay from "./FileDataDisplay";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import SavedDataTable from "./SavedDataTable";
+import Context from "../utils/context";
+import { getAllData, saveData } from "../utils/fetch";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    marginTop: theme.spacing(8),
     flexGrow: 1,
   },
 }));
 
 export default function Analyzer() {
   const classes = useStyles();
+  const context = useContext(Context);
+
   const [result, setResult] = useState({});
   const resultDisplayChild = useRef();
   const resultSaveChild = useRef();
@@ -26,7 +31,20 @@ export default function Analyzer() {
   }
 
   function handleNewResultSave(newResult) {
-    resultSaveChild.current.addSavedResult(newResult);
+    const saveDataToDatabase = async () => {
+      context.handleLoading();
+      const resultBack = await saveData(newResult);
+      context.handleClearLoading();
+      if (resultBack.status === 200) {
+        context.handleSuccess("Data is successfully saved.");
+        console.log(resultBack.data);
+        newResult = { ...newResult, _id: resultBack.data };
+        resultSaveChild.current.addSavedResult(newResult);
+      } else {
+        context.handleFailure(resultBack.data);
+      }
+    };
+    saveDataToDatabase();
   }
 
   return (

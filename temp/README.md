@@ -1,0 +1,1 @@
+This folder will store temp video file from upload for processing.

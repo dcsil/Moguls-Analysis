@@ -13,14 +13,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-// import for alert
-import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert from "@material-ui/lab/Alert";
-
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -49,7 +41,7 @@ const FileDataDisplay = forwardRef((props, ref) => {
   const [date, setDate] = useState(null);
   const [trick, setTrick] = useState("");
   const [dialogOpen, setDialogOpen] = React.useState(false);
-  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
+  // const [snackbarOpen, setSnackbarOpen] = React.useState(false);
 
   useImperativeHandle(ref, () => ({
     displayResult(resultObj) {
@@ -73,13 +65,11 @@ const FileDataDisplay = forwardRef((props, ref) => {
       name: athlete,
       date: date ? date.replace("-", "/").replace("-", "/") : "",
       trick: trick,
-      _id: math.round(math.random(101, 999)),
     };
     props.handleNewResultSave(newResult);
     setAthlete("");
     setDate("");
     setTrick("");
-    setSnackbarOpen(true);
   };
 
   const handleDialogTextChange = (event) => {
@@ -91,13 +81,6 @@ const FileDataDisplay = forwardRef((props, ref) => {
     } else {
       setTrick(value);
     }
-  };
-
-  const handleSnackbarClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setSnackbarOpen(false);
   };
 
   return (
@@ -125,10 +108,10 @@ const FileDataDisplay = forwardRef((props, ref) => {
               Angle between chest and arms: {result.chestArmAngle}
             </h3>
             <h3 style={{ marginBottom: "10px" }}>
-              Angle difference between arms: {result.armsAngleDiff}
+              Angle difference between arms: {result.armAngleDiff}
             </h3>
             <h3 style={{ marginBottom: "10px" }}>
-              Angle difference between knees: {result.kneesAngleDiff}
+              Angle difference between knees: {result.kneeAngleDiff}
             </h3>
           </div>
         )}
@@ -202,17 +185,6 @@ const FileDataDisplay = forwardRef((props, ref) => {
           </DialogActions>
         </form>
       </Dialog>
-
-      {/* Snackbar for showing saved successfully message */}
-      <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={6000}
-        onClose={handleSnackbarClose}
-      >
-        <Alert onClose={handleSnackbarClose} severity="success">
-          Saved successfully onto the data table!
-        </Alert>
-      </Snackbar>
     </div>
   );
 });

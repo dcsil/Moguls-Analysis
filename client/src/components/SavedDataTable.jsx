@@ -3,6 +3,8 @@ import React, {
   forwardRef,
   useImperativeHandle,
   useRef,
+  useEffect,
+  useContext,
 } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
@@ -25,38 +27,9 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
-import TableData from "./TableData";
 import FilterGrid from "./FilterGrid";
-
-const { data: rawData } = TableData;
-
-function createData(
-  _id,
-  name,
-  date,
-  trick,
-  kneeHipAngle,
-  hipChestAngle,
-  chestArmAngle,
-  armsAngleDiff,
-  kneesAngleDiff
-) {
-  return {
-    _id,
-    name,
-    date,
-    trick,
-    kneeHipAngle,
-    hipChestAngle,
-    chestArmAngle,
-    armsAngleDiff,
-    kneesAngleDiff,
-  };
-}
-
-const rowsData = rawData.map((data) => {
-  return createData(...data);
-});
+import { deleteData, getAllData } from "../utils/fetch";
+import Context from "../utils/context";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -131,7 +104,7 @@ const headCells = [
       "Angle between chest and arm relative to 180° (a value less than 0 indicates an angle less than 180°) ",
   },
   {
-    id: "armsAngleDiff",
+    id: "armAngleDiff",
     numeric: true,
     disablePadding: false,
     label: "Arms Angle Difference",
@@ -139,7 +112,7 @@ const headCells = [
       "Angle difference between two arms (the value is absolute difference so greater than or equal to 0)",
   },
   {
-    id: "kneesAngleDiff",
+    id: "kneeAngleDiff",
     numeric: true,
     disablePadding: false,
     label: "Knees Angle Difference",
@@ -316,6 +289,7 @@ const useStyles = makeStyles((theme) => ({
 
 const DataTable = forwardRef((props, ref) => {
   const classes = useStyles();
+  const context = useContext(Context);
   const filterChild = useRef();
 
   const [order, setOrder] = useState("desc");
@@ -324,7 +298,7 @@ const DataTable = forwardRef((props, ref) => {
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [rows, setRows] = useState(rowsData);
+  const [rows, setRows] = useState([]);
   const [open, setOpen] = useState(true);
 
   // handler for parent component to add new saved result
@@ -341,6 +315,21 @@ const DataTable = forwardRef((props, ref) => {
     },
   }));
 
+  useEffect(() => {
+    const setTableData = async () => {
+      context.handleLoading();
+      const resultBack = await getAllData();
+      context.handleClearLoading();
+      if (resultBack.status === 200) {
+        setRows(Object.values(resultBack.data));
+        console.log(resultBack.data);
+      } else {
+        context.handleFailure(resultBack.data);
+      }
+    };
+    setTableData();
+  }, []);
+
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
@@ -356,13 +345,29 @@ const DataTable = forwardRef((props, ref) => {
     setSelected([]);
   };
 
-  const handleDelete = (event) => {
+  const handleDelete = async (event) => {
+    const selectedRows = rows.filter((row) => {
+      return selected.includes(row._id);
+    });
+
+    // TODO: call delete request for each selected item
+    for (let i = 0; i < selectedRows.length; i++) {
+      let selectedRowId = selectedRows[i]._id;
+      const resultBack = await deleteData(selectedRowId);
+      if (resultBack.status !== 200) {
+        context.handleFailure(resultBack.data);
+        return;
+      }
+    }
+    // requests all success
+    context.handleSuccess("Successfully deleted selected record(s).");
+
+    // update state of self
     const newRows = rows.filter((row) => {
       return !selected.includes(row._id);
     });
-    // update self
     setRows(newRows);
-    // update child
+    // update state of child
     filterChild.current.updateRows(newRows);
     setSelected([]);
   };
@@ -478,8 +483,8 @@ const DataTable = forwardRef((props, ref) => {
                       <TableCell align="right">{row.kneeHipAngle}</TableCell>
                       <TableCell align="right">{row.hipChestAngle}</TableCell>
                       <TableCell align="right">{row.chestArmAngle}</TableCell>
-                      <TableCell align="right">{row.armsAngleDiff}</TableCell>
-                      <TableCell align="right">{row.kneesAngleDiff}</TableCell>
+                      <TableCell align="right">{row.armAngleDiff}</TableCell>
+                      <TableCell align="right">{row.kneeAngleDiff}</TableCell>
                     </TableRow>
                   );
                 })}

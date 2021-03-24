@@ -1,10 +1,12 @@
-import React, { useCallback, useState } from "react";
+import React, { useContext, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDropzone } from "react-dropzone";
 import ReactPlayer from "react-player";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import { uploadVideo } from "../utils/fetch";
+import Context from "../utils/context";
 
 // reference code:
 // https://www.educative.io/edpresso/file-upload-in-react
@@ -32,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 function FileUpload(props) {
   const classes = useStyles();
+  const context = useContext(Context);
 
   // State to store uploaded file
   const [file, setFile] = useState(null);
@@ -47,16 +50,31 @@ function FileUpload(props) {
   });
 
   // Handles file upload event and updates state
-  function handleUpload(event) {
-    setFile(event.target.files[0]);
-    // TODO: Add code here to upload file to server
-    // ...
+  function handleUpload() {
+    const uploadVideoAndGetResult = async () => {
+      context.handleLoading();
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("filename", file.name);
+      console.log(formData.get("file"));
+      console.log(formData.get("filename"));
+      const resultBack = await uploadVideo(formData);
+      context.handleClearLoading();
+      if (resultBack.status === 200) {
+        context.handleSuccess("Metrics are successfully extracted.");
+        props.onClick({ ...resultBack.data, videoName: file.name });
+      } else {
+        // console.log(resultBack.data);
+        context.handleFailure(resultBack.data);
+      }
+    };
+    uploadVideoAndGetResult();
   }
 
   return (
     <div className={classes.root}>
       <Paper className={classes.paper} {...getRootProps()}>
-        <input {...getInputProps()} />
+        <input {...getInputProps()} name="file" type="file" />
         {file ? (
           <ReactPlayer
             url={videoPath}
@@ -82,15 +100,7 @@ function FileUpload(props) {
         style={{ marginTop: "20px" }}
         disabled={!file}
         onClick={() => {
-          props.onClick({
-            // Some hardcode data for UI tests
-            videoName: file.name,
-            kneeHipAngle: (5.2).toFixed(1),
-            hipChestAngle: (-3).toFixed(1),
-            chestArmAngle: (6.1).toFixed(1),
-            armsAngleDiff: (9.2).toFixed(1),
-            kneesAngleDiff: (8).toFixed(1),
-          });
+          handleUpload();
         }}
       >
         Start Analyze
