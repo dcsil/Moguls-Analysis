@@ -28,7 +28,7 @@ import Switch from "@material-ui/core/Switch";
 import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import FilterGrid from "./FilterGrid";
-import { getAllData } from "../utils/fetch";
+import { deleteData, getAllData } from "../utils/fetch";
 import Context from "../utils/context";
 
 function descendingComparator(a, b, orderBy) {
@@ -345,13 +345,29 @@ const DataTable = forwardRef((props, ref) => {
     setSelected([]);
   };
 
-  const handleDelete = (event) => {
+  const handleDelete = async (event) => {
+    const selectedRows = rows.filter((row) => {
+      return selected.includes(row._id);
+    });
+
+    // TODO: call delete request for each selected item
+    for (let i = 0; i < selectedRows.length; i++) {
+      let selectedRowId = selectedRows[i]._id;
+      const resultBack = await deleteData(selectedRowId);
+      if (resultBack.status !== 200) {
+        context.handleFailure(resultBack.data);
+        return;
+      }
+    }
+    // requests all success
+    context.handleSuccess("Successfully deleted selected record(s).");
+
+    // update state of self
     const newRows = rows.filter((row) => {
       return !selected.includes(row._id);
     });
-    // update self
     setRows(newRows);
-    // update child
+    // update state of child
     filterChild.current.updateRows(newRows);
     setSelected([]);
   };

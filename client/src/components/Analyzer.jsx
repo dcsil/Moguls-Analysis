@@ -38,7 +38,8 @@ export default function Analyzer() {
       if (resultBack.status === 200) {
         context.handleSuccess("Data is successfully saved.");
         console.log(resultBack.data);
-        // TODO: refresh table data
+        newResult = { ...newResult, _id: resultBack.data };
+        resultSaveChild.current.addSavedResult(newResult);
       } else {
         context.handleFailure(resultBack.data);
       }
