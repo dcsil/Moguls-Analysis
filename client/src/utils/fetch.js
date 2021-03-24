@@ -48,3 +48,20 @@ export const saveData = (data) => {
       return error.response;
     });
 };
+
+/** Delete a data record in the database given the record id
+ *
+ * @param {*} data the data file that is needed to be saved
+ */
+
+export const deleteData = (_id) => {
+  return axios
+    .delete("/deleteData/" + _id, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .catch((error) => {
+      return error.response;
+    });
+};
