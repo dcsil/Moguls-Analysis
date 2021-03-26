@@ -6,8 +6,6 @@ import * as MessageReducer from "./store/reducers/message_reducer";
 import * as DataReducer from "./store/reducers/data_reducer";
 import Main from "./components/Main";
 
-// import Auth from "./utils/auth";
-
 const ContextState = () => {
   /* Auth Reducer */
   const [stateAuthReducer, dispatchAuthReducer] = useReducer(
