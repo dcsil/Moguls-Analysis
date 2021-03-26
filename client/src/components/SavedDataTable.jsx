@@ -351,6 +351,7 @@ const DataTable = forwardRef((props, ref) => {
     });
 
     // TODO: call delete request for each selected item
+    context.handleLoading();
     for (let i = 0; i < selectedRows.length; i++) {
       let selectedRowId = selectedRows[i]._id;
       const resultBack = await deleteData(selectedRowId);
@@ -359,6 +360,7 @@ const DataTable = forwardRef((props, ref) => {
         return;
       }
     }
+    context.handleClearLoading();
     // requests all success
     context.handleSuccess("Successfully deleted selected record(s).");
 

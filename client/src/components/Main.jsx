@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Header from "./Header";
 import Analyzer from "./Analyzer";
-import Auth from "./Auth";
+import Auth from "./Login";
 import Context from "../utils/context";
 import Message from "./Message";
 
