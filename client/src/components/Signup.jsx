@@ -15,11 +15,11 @@ const useStyles = makeStyles((theme) => ({
   image: {
     marginTop: theme.spacing(8),
   },
-  signup: {
+  login: {
     textAlign: "right",
     marginTop: theme.spacing(2),
   },
-  signupButton: {
+  loginButton: {
     marginLeft: theme.spacing(1),
   },
   h2: {
@@ -30,19 +30,19 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(5),
     color: "grey",
   },
-  loginLabel: {
+  signupLabel: {
     marginTop: theme.spacing(5),
   },
   textField: {
     marginTop: theme.spacing(1),
   },
-  loginButton: {
-    marginTop: theme.spacing(10),
-    marginBottom: theme.spacing(15),
+  signupButton: {
+    marginTop: theme.spacing(5),
+    marginBottom: theme.spacing(10),
   },
 }));
 
-export default function Login() {
+export default function Signup() {
   const classes = useStyles();
 
   return (
@@ -52,22 +52,22 @@ export default function Login() {
           <Grid container spacing={10}>
             <Grid item xs={5}>
               <img
-                src="/static/login_img.svg"
+                src="/static/signup_img.svg"
                 alt="Login"
                 className={classes.image}
               />
             </Grid>
             <Grid item xs={7} className={classes.loginContainer}>
-              <div className={classes.signup}>
+              <div className={classes.login}>
                 <Typography variant="h6" className={classes.h2}>
-                  Don't have an account?
+                  Already have an account?
                   <Button
                     variant="outlined"
                     color="secondary"
                     size="small"
-                    className={classes.signupButton}
+                    className={classes.loginButton}
                   >
-                    Sign up
+                    Login
                   </Button>
                 </Typography>
               </div>
@@ -76,10 +76,10 @@ export default function Login() {
                 Welcome
               </Typography>
               <Typography variant="h4" className={classes.h4}>
-                Login your account
+                Register your account
               </Typography>
               <form autoComplete="off">
-                <Typography variant="h5" className={classes.loginLabel}>
+                <Typography variant="h5" className={classes.signupLabel}>
                   Username
                 </Typography>
                 <TextField
@@ -91,7 +91,7 @@ export default function Login() {
                   fullWidth
                   className={classes.textField}
                 />
-                <Typography variant="h5" className={classes.loginLabel}>
+                <Typography variant="h5" className={classes.signupLabel}>
                   Password
                 </Typography>
                 <TextField
@@ -103,14 +103,26 @@ export default function Login() {
                   fullWidth
                   className={classes.textField}
                 />
+                <Typography variant="h5" className={classes.signupLabel}>
+                  Confirm Password
+                </Typography>
+                <TextField
+                  required
+                  id="passwordConfirmed"
+                  label="Confirm your password"
+                  type="password"
+                  variant="outlined"
+                  fullWidth
+                  className={classes.textField}
+                />
                 <Button
                   variant="contained"
                   color="secondary"
                   type="submit"
                   size="large"
-                  className={classes.loginButton}
+                  className={classes.signupButton}
                 >
-                  LOGIN
+                  SIGN UP
                 </Button>
               </form>
             </Grid>
