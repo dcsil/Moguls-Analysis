@@ -6,9 +6,3 @@ test("should show a header bar", () => {
   const linkElement = screen.getByText("Moguls Analysis");
   expect(linkElement).toBeInTheDocument();
 });
-
-test("should show a table title", () => {
-  render(<App />);
-  const linkElement = screen.getByText("Saved Data");
-  expect(linkElement).toBeInTheDocument();
-});
