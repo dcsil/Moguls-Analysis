@@ -2,7 +2,7 @@ import * as ACTION_TYPES from "../actions/action_types";
 
 export const initialState = {
   // TODO: change this
-  isAuth: true,
+  isAuth: false,
   username: "Test Username",
 };
 

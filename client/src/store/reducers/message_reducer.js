@@ -20,7 +20,7 @@ export const MessageReducer = (state = initialState, action) => {
     case ACTION_TYPES.FAILURE:
       return {
         ...state,
-        success: true,
+        success: false,
         loading: false,
         msg: action.msg,
         msgDisplay: true,

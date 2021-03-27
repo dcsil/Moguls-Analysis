@@ -88,7 +88,7 @@ function FileUpload(props) {
             <h2 style={{ margin: "20px" }}>
               Drag and drop a video file here, or click to select a video
             </h2>
-            <h3>(Supported video extensions: mp4, mkv)</h3>
+            <h3>(Supported video extensions: mp4)</h3>
           </div>
         )}
       </Paper>

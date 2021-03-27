@@ -354,3 +354,52 @@ pymongo.errors.ServerSelectionTimeoutError: 491-shard-00-02.kqgyf.mongodb.net:27
 2021-03-20 15:47:34,541 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
 2021-03-20 15:50:14,968 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
 2021-03-20 15:51:21,914 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 10:10:44,150 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 10:23:22,264 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 10:26:13,165 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 13:02:45,962 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 13:04:20,721 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 13:11:59,984 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 13:13:28,438 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 13:26:55,025 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 13:28:13,919 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 13:29:36,083 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 13:31:55,857 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 13:33:44,188 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 13:35:21,024 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 13:38:38,085 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 13:39:20,836 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 13:40:14,810 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 14:20:04,736 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 14:21:03,004 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 14:24:56,637 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 14:28:18,947 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 14:28:59,279 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 15:17:20,288 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 16:26:05,592 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 16:29:49,151 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 16:45:10,351 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 17:50:05,664 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 17:54:23,987 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 18:01:33,190 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-21 18:32:57,375 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-23 20:21:09,820 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-23 20:26:27,264 - ERROR - app.py - image_preprocess - 53 - Bad Request: Uploaded file type is not supported.
+2021-03-23 20:29:57,096 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-23 20:32:15,358 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-23 20:38:09,123 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-23 20:44:28,708 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-23 20:47:23,169 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-24 18:02:59,326 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-24 18:07:52,339 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-24 18:16:57,136 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-24 18:20:48,074 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-24 18:32:41,124 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-24 21:20:19,348 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-24 21:21:00,068 - ERROR - app.py - image_preprocess - 53 - Bad Request: Uploaded file type is not supported.
+2021-03-26 05:17:18,730 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-03-26 05:17:34,532 - ERROR - app.py - image_preprocess - 53 - Bad Request: Uploaded file type is not supported.
+2021-03-26 05:17:39,630 - ERROR - app.py - image_preprocess - 53 - Bad Request: Uploaded file type is not supported.
+2021-03-26 05:17:43,026 - ERROR - app.py - image_preprocess - 53 - Bad Request: Uploaded file type is not supported.
+2021-03-26 05:17:50,673 - ERROR - app.py - image_preprocess - 53 - Bad Request: Uploaded file type is not supported.
+2021-03-26 05:18:04,553 - ERROR - app.py - image_preprocess - 53 - Bad Request: Uploaded file type is not supported.
