@@ -403,3 +403,6 @@ pymongo.errors.ServerSelectionTimeoutError: 491-shard-00-02.kqgyf.mongodb.net:27
 2021-03-26 05:17:43,026 - ERROR - app.py - image_preprocess - 53 - Bad Request: Uploaded file type is not supported.
 2021-03-26 05:17:50,673 - ERROR - app.py - image_preprocess - 53 - Bad Request: Uploaded file type is not supported.
 2021-03-26 05:18:04,553 - ERROR - app.py - image_preprocess - 53 - Bad Request: Uploaded file type is not supported.
+2021-04-03 20:45:35,229 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-04-03 20:47:25,453 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-04-03 20:48:13,764 - ERROR - app.py - image_preprocess - 53 - Bad Request: Uploaded file type is not supported.

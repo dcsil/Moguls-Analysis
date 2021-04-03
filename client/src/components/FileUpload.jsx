@@ -39,6 +39,7 @@ function FileUpload(props) {
   // State to store uploaded file
   const [file, setFile] = useState(null);
   const [videoPath, setVideoPath] = useState(null);
+  const [imageResult, setImageResult] = useState(false);
 
   // State for Dropzpne
   const { getRootProps, getInputProps } = useDropzone({
@@ -63,6 +64,7 @@ function FileUpload(props) {
       if (resultBack.status === 200) {
         context.handleSuccess("Metrics are successfully extracted.");
         props.onClick({ ...resultBack.data, videoName: file.name });
+        setImageResult(true);
       } else {
         // console.log(resultBack.data);
         context.handleFailure(resultBack.data);
@@ -76,12 +78,19 @@ function FileUpload(props) {
       <Paper className={classes.paper} {...getRootProps()}>
         <input {...getInputProps()} name="file" type="file" />
         {file ? (
-          <ReactPlayer
-            url={videoPath}
-            width="100%"
-            height="100%"
-            controls={true}
-          />
+          imageResult ? (
+            <img
+              src="/static/result.png"
+              alt="Pose estimation with annotation"
+            />
+          ) : (
+            <ReactPlayer
+              url={videoPath}
+              width="100%"
+              height="100%"
+              controls={true}
+            />
+          )
         ) : (
           <div>
             <CloudUploadIcon fontSize="large" />
