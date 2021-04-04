@@ -101,19 +101,36 @@ function FileUpload(props) {
           </div>
         )}
       </Paper>
-      <Button
-        variant="contained"
-        color="secondary"
-        size="large"
-        fullWidth={true}
-        style={{ marginTop: "20px" }}
-        disabled={!file}
-        onClick={() => {
-          handleUpload();
-        }}
-      >
-        Start Analyze
-      </Button>
+      {imageResult ? (
+        <Button
+          variant="contained"
+          color="secondary"
+          size="large"
+          fullWidth={true}
+          style={{ marginTop: "20px" }}
+          onClick={() => {
+            setImageResult(false);
+            setFile(null);
+            setVideoPath(null);
+          }}
+        >
+          Clear Uploaded File
+        </Button>
+      ) : (
+        <Button
+          variant="contained"
+          color="secondary"
+          size="large"
+          fullWidth={true}
+          style={{ marginTop: "20px" }}
+          disabled={!file}
+          onClick={() => {
+            handleUpload();
+          }}
+        >
+          Start Analyze
+        </Button>
+      )}
     </div>
   );
 }
