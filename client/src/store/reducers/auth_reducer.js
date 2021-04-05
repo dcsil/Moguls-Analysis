@@ -3,7 +3,7 @@ import * as ACTION_TYPES from "../actions/action_types";
 export const initialState = {
   // TODO: change this
   isAuth: true,
-  username: "David@csi.ca",
+  username: "Thomas@csi.ca",
 };
 
 export const AuthReducer = (state = initialState, action) => {

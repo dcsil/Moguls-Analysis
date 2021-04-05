@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     marginLeft: theme.spacing(1),
   },
+  button: {
+    textTransform: "none",
+  },
 }));
 
 export default function Header() {
@@ -78,6 +81,7 @@ export default function Header() {
                 aria-haspopup="true"
                 onClick={handleToggle}
                 color="inherit"
+                className={classes.button}
               >
                 <AccountCircle />{" "}
                 <Typography variant="h5" className={classes.title}>
