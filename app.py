@@ -62,7 +62,15 @@ def register():
         password = generate_password_hash(request.json['password'])
 
         collection = mongo.db['users']
-        result = collection.insert({'username': username, 'password': password})
+
+        # check if username is already exist
+        user = collection.find_one({'username': username})
+        if user:
+            response = make_response("This username has already been taken.")
+            response.mimetype = 'text/plain'
+            return response, 201
+
+        result = collection.insert_one({'username': username, 'password': password})
         if result:
             response = make_response(str(result))
             response.mimetype = 'text/plain'
@@ -98,7 +106,7 @@ def login():
         user = collection.find_one({'username': username})
 
         if user:
-            if check_password_hash(password, user['password']):
+            if check_password_hash(user['password'], password):
                 token = User.generate_token(username)
                 return jsonify({'token': token}), 200
             else:
