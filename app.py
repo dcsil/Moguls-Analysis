@@ -41,6 +41,17 @@ DirPATH = os.path.abspath(os.path.dirname(__name__))
 ALLOWED_EXTENSIONS = {'mp4', 'mkv'}
 
 
+def check_pose_request_user(received_request):
+    if not received_request.data:
+        response = make_response("Bad Request: Server did not received any data")
+        response.mimetype = 'text/plain'
+        return response, 400
+    if not (received_request.json and 'username' in received_request.json and 'password' in received_request.json):
+        response = make_response("Bad Request: Server received invalid Json")
+        response.mimetype = 'text/plain'
+        return response, 400
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == 'GET':
@@ -48,15 +59,9 @@ def register():
         return app.send_static_file('index.html')
 
     if request.method == 'POST':
-        if not request.data:
-            response = make_response(
-                "Bad Request: Server did not received any data")
-            response.mimetype = 'text/plain'
-            return response, 400
-        if not (request.json and 'username' in request.json and 'password' in request.json):
-            response = make_response("Bad Request: Server received invalid Json")
-            response.mimetype = 'text/plain'
-            return response, 400
+        check_status = check_pose_request_user(request)
+        if check_status:
+            return check_status
 
         username = request.json['username']
         password = generate_password_hash(request.json['password'])
@@ -89,15 +94,9 @@ def login():
         return app.send_static_file('index.html')
 
     if request.method == 'POST':
-        if not request.data:
-            response = make_response(
-                "Bad Request: Server did not received any data")
-            response.mimetype = 'text/plain'
-            return response, 400
-        if not (request.json and 'username' in request.json and 'password' in request.json):
-            response = make_response("Bad Request: Server received invalid Json")
-            response.mimetype = 'text/plain'
-            return response, 400
+        check_status = check_pose_request_user(request)
+        if check_status:
+            return check_status
 
         username = request.json["username"]
         password = request.json['password']
@@ -136,7 +135,7 @@ def user_loader(received_request):
     except SignatureExpired:
         app.logger.info("Token is expired")
         return
-    return User(User.verify_token(token))
+    return User(User.verify_token(token)) if token else None
 
 
 @login_required
@@ -190,8 +189,14 @@ def get_all_data():
     table_name = "test"  # for early develop only
     collection = mongo.db[table_name]
 
+    cur_user = user_loader(request)
+    if not cur_user:
+        response = make_response("Bad Request: Please login first")
+        response.mimetype = 'text/plain'
+        return response, 400
+
     # get all records
-    records = collection.find({})
+    records = collection.find({'username' : cur_user.username})
     if records:
         data = {}
         for item in records:
@@ -210,12 +215,17 @@ def get_all_data():
 def add_data():
     # check received data
     if not request.data:
-        response = make_response(
-            "Bad Request: Server did not received any data")
+        response = make_response("Bad Request: Server did not received any data")
         response.mimetype = 'text/plain'
         return response, 400
     if not request.json:
         response = make_response("Bad Request: Server received empty Json")
+        response.mimetype = 'text/plain'
+        return response, 400
+
+    cur_user = user_loader(request)
+    if not cur_user:
+        response = make_response("Bad Request: Please login first")
         response.mimetype = 'text/plain'
         return response, 400
 
@@ -224,7 +234,9 @@ def add_data():
     collection = mongo.db[table_name]
 
     # add to target collection and perform error checking
-    result = collection.insert(request.json)
+    data = request.json
+    data['username'] = cur_user.username
+    result = collection.insert(data)
     if result:
         response = make_response(str(result))
         response.mimetype = 'text/plain'
@@ -239,6 +251,12 @@ def add_data():
 @login_required
 @app.route('/deleteData/<record_id>', methods=['DELETE'])
 def delete_data(record_id):
+    cur_user = user_loader(request)
+    if not cur_user:
+        response = make_response("Bad Request: Please login first")
+        response.mimetype = 'text/plain'
+        return response, 400
+
     # find target collection
     table_name = "test"  # for early develop only
     collection = mongo.db[table_name]
@@ -261,10 +279,10 @@ def delete_data(record_id):
 
 
 # verify sentry is working
-@app.route('/debug-sentry')
-def trigger_error():
-    app.logger.debug("This error is used to verify sentry is working")
-    division_by_zero = 1 / 0
+# @app.route('/debug-sentry')
+# def trigger_error():
+#     app.logger.debug("This error is used to verify sentry is working")
+#     division_by_zero = 1 / 0
 
 
 if __name__ == '__main__':
