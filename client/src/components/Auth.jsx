@@ -5,10 +5,21 @@ import Signup from "./Signup";
 
 export default function Auth() {
   const [showLogin, setShowLogin] = useState(true);
+  const switchLogin = () => {
+    setShowLogin(true);
+  };
+  const switchRegister = () => {
+    setShowLogin(false);
+  };
+
   return (
     <div>
       <Header />
-      {showLogin ? <Login /> : <Signup />}
+      {showLogin ? (
+        <Login switchRegister={switchRegister} />
+      ) : (
+        <Signup switchLogin={switchLogin} />
+      )}
     </div>
   );
 }

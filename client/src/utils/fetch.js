@@ -65,3 +65,31 @@ export const deleteData = (_id) => {
       return error.response;
     });
 };
+
+/** Send request to login a user
+ */
+export const userLogin = (data) => {
+  return axios
+    .post("/login", data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .catch((error) => {
+      return error.response;
+    });
+};
+
+/** Send request to register a new user
+ */
+export const userRegister = (data) => {
+  return axios
+    .post("/register", data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .catch((error) => {
+      return error.response;
+    });
+};

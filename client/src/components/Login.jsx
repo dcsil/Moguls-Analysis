@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -42,8 +43,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
+export default function Login(props) {
   const classes = useStyles();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleChange = (e) => {
+    let changeName = e.target.name;
+    let currValue = e.target.value;
+    console.log(changeName);
+    if (changeName === "username") {
+      setUsername(currValue);
+    } else {
+      setPassword(currValue);
+    }
+  };
+
+  const handleSubmit = () => {};
 
   return (
     <div className={classes.root}>
@@ -66,6 +82,7 @@ export default function Login() {
                     color="secondary"
                     size="small"
                     className={classes.signupButton}
+                    onClick={props.switchRegister}
                   >
                     Sign up
                   </Button>
@@ -88,8 +105,11 @@ export default function Login() {
                   type="email"
                   label="Your email"
                   variant="outlined"
+                  name="username"
+                  value={username}
                   fullWidth
                   className={classes.textField}
+                  onChange={handleChange}
                 />
                 <Typography variant="h5" className={classes.loginLabel}>
                   Password
@@ -99,9 +119,12 @@ export default function Login() {
                   id="password"
                   type="password"
                   label="Your password"
+                  name="password"
+                  value={password}
                   variant="outlined"
                   fullWidth
                   className={classes.textField}
+                  onChange={handleChange}
                 />
                 <Button
                   variant="contained"
