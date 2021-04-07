@@ -8,19 +8,23 @@ import Message from "./Message";
 function Main() {
   const context = useContext(Context);
 
-  let content = <Auth />;
-
-  if (context.authState) {
-    content = (
-      <div>
-        <Header />
-        <Analyzer />
-        <Message />
-      </div>
-    );
-  }
-
-  return content;
+  return (
+    <div>
+      {context.authState ? (
+        <div>
+          <Header />
+          <Analyzer />
+          <Message />
+        </div>
+      ) : (
+        <div>
+          <Header />
+          <Message />
+          <Auth />
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default Main;

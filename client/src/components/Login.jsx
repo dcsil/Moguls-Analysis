@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Context from "../utils/context";
+import { userLogin } from "../utils/fetch";
 
 const useStyles = makeStyles((theme) => ({
   outerContainer: {
@@ -45,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login(props) {
   const classes = useStyles();
+  const context = useContext(Context);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -59,7 +62,27 @@ export default function Login(props) {
     }
   };
 
-  const handleSubmit = () => {};
+  function handleLogin(event) {
+    event.preventDefault();
+    const sendLoginRequest = async () => {
+      context.handleLoading();
+      const resultBack = await userLogin({
+        username: username,
+        password: password,
+      });
+      context.handleClearLoading();
+      if (resultBack.status === 200) {
+        context.handleSuccess("You have successfully signed in.");
+        console.log(resultBack);
+        let loginData = { username: username, token: resultBack.token };
+        console.log(loginData);
+        context.handleUserLogin(loginData);
+      } else {
+        context.handleFailure(resultBack.data);
+      }
+    };
+    sendLoginRequest();
+  }
 
   return (
     <div className={classes.root}>
@@ -132,6 +155,7 @@ export default function Login(props) {
                   type="submit"
                   size="large"
                   className={classes.loginButton}
+                  onClick={handleLogin}
                 >
                   LOGIN
                 </Button>

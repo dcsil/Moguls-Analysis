@@ -13,8 +13,8 @@ const ContextState = () => {
     AuthReducer.initialState
   );
 
-  const handleLogin = (username) => {
-    dispatchAuthReducer(ACTIONS.login_success(username));
+  const handleLogin = (data) => {
+    dispatchAuthReducer(ACTIONS.login_success(data));
   };
 
   const handleLogout = () => {

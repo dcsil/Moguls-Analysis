@@ -66,7 +66,14 @@ export default function Signup(props) {
     }
   };
 
-  const handleRegister = () => {
+  function handleRegister(event) {
+    event.preventDefault();
+    if (password !== confirmedPassword) {
+      console.log("passwords don't match");
+      context.handleFailure("Please make sure your passwords match.");
+      return;
+    }
+
     const sendRegisterRequest = async () => {
       context.handleLoading();
       const resultBack = await userRegister({
@@ -76,18 +83,15 @@ export default function Signup(props) {
       context.handleClearLoading();
       if (resultBack.status === 200) {
         context.handleSuccess("Your account is successfully registered.");
+        console.log("successfully registered");
         props.switchLogin();
       } else {
         context.handleFailure(resultBack.data);
       }
     };
 
-    if (password !== confirmedPassword) {
-      context.handleFailure("Please make sure your passwords match.");
-      return;
-    }
     sendRegisterRequest();
-  };
+  }
 
   return (
     <div className={classes.root}>
@@ -175,7 +179,7 @@ export default function Signup(props) {
                   type="submit"
                   size="large"
                   className={classes.signupButton}
-                  onSubmit={handleRegister}
+                  onClick={handleRegister}
                 >
                   SIGN UP
                 </Button>
