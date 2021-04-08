@@ -15,6 +15,7 @@ import Popper from "@material-ui/core/Popper";
 import MenuList from "@material-ui/core/MenuList";
 import Logo from "./Logo";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import { useCookies } from "react-cookie";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,6 +35,7 @@ export default function Header() {
   const context = useContext(Context);
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+  const [cookies, setCookie] = useCookies(["loginInfo"]);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -68,6 +70,7 @@ export default function Header() {
     event.preventDefault();
     context.handleSuccess("You have successfully logged out.");
     context.handleUserLogout();
+    setCookie("loginInfo", {});
   }
 
   return (

@@ -76,7 +76,7 @@ export default function Login(props) {
         context.handleSuccess("You have successfully signed in.");
         let loginData = { username: username, token: resultBack.data.token };
         context.handleUserLogin(loginData);
-        setCookie("loginInfo", loginData, { path: "/" });
+        setCookie("loginInfo", loginData);
       } else {
         context.handleFailure(resultBack.data);
       }

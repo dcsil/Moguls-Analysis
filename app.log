@@ -978,3 +978,102 @@ itsdangerous.exc.BadSignature: No b'.' found in value
 2021-04-08 12:03:31,987 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
 2021-04-08 12:04:45,204 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
 2021-04-08 12:10:30,707 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 12:19:31,105 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 12:49:54,133 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 13:02:18,116 - ERROR - app.py - log_exception - 1890 - Exception on /addData [POST]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 226, in add_data
+    cur_user = user_loader(request)
+  File "app.py", line 138, in user_loader
+    return User(User.verify_token(token)) if token else None
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 202, in loads
+    raise SignatureExpired(
+itsdangerous.exc.SignatureExpired: Signature expired
+2021-04-08 13:02:26,904 - ERROR - app.py - log_exception - 1890 - Exception on /addData [POST]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 226, in add_data
+    cur_user = user_loader(request)
+  File "app.py", line 138, in user_loader
+    return User(User.verify_token(token)) if token else None
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 202, in loads
+    raise SignatureExpired(
+itsdangerous.exc.SignatureExpired: Signature expired
+2021-04-08 13:02:43,392 - ERROR - app.py - log_exception - 1890 - Exception on /addData [POST]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 226, in add_data
+    cur_user = user_loader(request)
+  File "app.py", line 138, in user_loader
+    return User(User.verify_token(token)) if token else None
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 202, in loads
+    raise SignatureExpired(
+itsdangerous.exc.SignatureExpired: Signature expired
+2021-04-08 13:02:54,204 - ERROR - app.py - log_exception - 1890 - Exception on /getAllData [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 192, in get_all_data
+    cur_user = user_loader(request)
+  File "app.py", line 138, in user_loader
+    return User(User.verify_token(token)) if token else None
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 202, in loads
+    raise SignatureExpired(
+itsdangerous.exc.SignatureExpired: Signature expired
+2021-04-08 13:12:02,331 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 13:19:55,218 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 13:21:51,931 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 13:22:33,298 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 13:26:33,685 - INFO - app.py - <module> - 30 - ========== Logging Started ==========

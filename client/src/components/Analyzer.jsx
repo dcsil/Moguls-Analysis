@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext, useEffect } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import FileUpload from "./FileUpload";
 import FileDataDisplay from "./FileDataDisplay";
@@ -33,6 +33,7 @@ export default function Analyzer() {
   function handleNewResultSave(newResult) {
     const saveDataToDatabase = async () => {
       context.handleLoading();
+      console.log("current token: " + context.tokenState);
       const resultBack = await saveData(newResult, context.tokenState);
       context.handleClearLoading();
       if (resultBack.status === 200) {

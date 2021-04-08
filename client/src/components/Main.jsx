@@ -17,7 +17,7 @@ function Main() {
         token: cookies.loginInfo.token,
       });
     }
-  });
+  }, []);
 
   return (
     <div>
