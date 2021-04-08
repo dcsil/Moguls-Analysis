@@ -30,6 +30,9 @@ import FilterListIcon from "@material-ui/icons/FilterList";
 import FilterGrid from "./FilterGrid";
 import { deleteData, getAllData } from "../utils/fetch";
 import Context from "../utils/context";
+import data from "../utils/some_data";
+
+// code references: https://codesandbox.io/s/f71wj by Material-UI
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -318,8 +321,10 @@ const DataTable = forwardRef((props, ref) => {
   useEffect(() => {
     const setTableData = async () => {
       context.handleLoading();
-      const resultBack = await getAllData();
+      console.log(context.tokenState);
+      const resultBack = await getAllData(context.tokenState);
       context.handleClearLoading();
+      console.log(data);
       if (resultBack.status === 200) {
         setRows(Object.values(resultBack.data));
         console.log(resultBack.data);
@@ -354,7 +359,7 @@ const DataTable = forwardRef((props, ref) => {
     context.handleLoading();
     for (let i = 0; i < selectedRows.length; i++) {
       let selectedRowId = selectedRows[i]._id;
-      const resultBack = await deleteData(selectedRowId);
+      const resultBack = await deleteData(selectedRowId, context.tokenState);
       if (resultBack.status !== 200) {
         context.handleFailure(resultBack.data);
         return;

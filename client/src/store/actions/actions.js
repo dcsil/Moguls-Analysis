@@ -28,10 +28,11 @@ export const clear_msg = () => {
   };
 };
 
-export const login_success = (username) => {
+export const login_success = (data) => {
   return {
     type: ACTION_TYPES.LOGIN_SUCCESS,
-    username: username,
+    username: data.username,
+    token: data.token,
   };
 };
 

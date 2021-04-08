@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext, useEffect } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import FileUpload from "./FileUpload";
 import FileDataDisplay from "./FileDataDisplay";
@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import SavedDataTable from "./SavedDataTable";
 import Context from "../utils/context";
-import { getAllData, saveData } from "../utils/fetch";
+import { saveData } from "../utils/fetch";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +33,8 @@ export default function Analyzer() {
   function handleNewResultSave(newResult) {
     const saveDataToDatabase = async () => {
       context.handleLoading();
-      const resultBack = await saveData(newResult);
+      console.log("current token: " + context.tokenState);
+      const resultBack = await saveData(newResult, context.tokenState);
       context.handleClearLoading();
       if (resultBack.status === 200) {
         context.handleSuccess("Data is successfully saved.");
