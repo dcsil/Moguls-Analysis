@@ -33,7 +33,7 @@ export default function Analyzer() {
   function handleNewResultSave(newResult) {
     const saveDataToDatabase = async () => {
       context.handleLoading();
-      const resultBack = await saveData(newResult);
+      const resultBack = await saveData(newResult, context.tokenState);
       context.handleClearLoading();
       if (resultBack.status === 200) {
         context.handleSuccess("Data is successfully saved.");

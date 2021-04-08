@@ -74,7 +74,7 @@ export default function Login(props) {
       context.handleClearLoading();
       if (resultBack.status === 200) {
         context.handleSuccess("You have successfully signed in.");
-        let loginData = { username: username, token: resultBack.token };
+        let loginData = { username: username, token: resultBack.data.token };
         context.handleUserLogin(loginData);
         setCookie("loginInfo", loginData, { path: "/" });
       } else {

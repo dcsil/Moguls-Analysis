@@ -73,6 +73,7 @@ const ContextState = () => {
           // Auth Reducer
           authState: stateAuthReducer.isAuth,
           usernameState: stateAuthReducer.username,
+          tokenState: stateAuthReducer.token,
           handleUserLogin: (username) => handleLogin(username),
           handleUserLogout: () => handleLogout(),
           // Message Reducer
