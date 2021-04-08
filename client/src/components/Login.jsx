@@ -104,6 +104,7 @@ export default function Login(props) {
                     variant="outlined"
                     color="secondary"
                     size="small"
+                    title="signupButton"
                     className={classes.signupButton}
                     onClick={props.switchRegister}
                   >
@@ -133,6 +134,7 @@ export default function Login(props) {
                   fullWidth
                   className={classes.textField}
                   onChange={handleChange}
+                  inputProps={{ "data-testid": "usernameTextField" }}
                 />
                 <Typography variant="h5" className={classes.loginLabel}>
                   Password
@@ -148,6 +150,7 @@ export default function Login(props) {
                   fullWidth
                   className={classes.textField}
                   onChange={handleChange}
+                  inputProps={{ "data-testid": "passwordTextField" }}
                 />
                 <Button
                   variant="contained"
@@ -156,6 +159,7 @@ export default function Login(props) {
                   size="large"
                   className={classes.loginButton}
                   onClick={handleLogin}
+                  title="loginButton"
                 >
                   LOGIN
                 </Button>
