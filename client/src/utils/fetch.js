@@ -93,3 +93,11 @@ export const userRegister = (data) => {
       return error.response;
     });
 };
+
+/** Send request to register a new user
+ */
+export const userLogout = () => {
+  return axios.get("/logout").catch((error) => {
+    return error.response;
+  });
+};

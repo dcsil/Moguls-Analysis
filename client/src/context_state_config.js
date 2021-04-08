@@ -5,6 +5,7 @@ import * as AuthReducer from "./store/reducers/auth_reducer";
 import * as MessageReducer from "./store/reducers/message_reducer";
 // import * as DataReducer from "./store/reducers/data_reducer";
 import Main from "./components/Main";
+import { CookiesProvider } from "react-cookie";
 
 const ContextState = () => {
   /* Auth Reducer */
@@ -66,7 +67,7 @@ const ContextState = () => {
   // };
 
   return (
-    <div>
+    <CookiesProvider>
       <Context.Provider
         value={{
           // Auth Reducer
@@ -93,7 +94,7 @@ const ContextState = () => {
       >
         <Main />
       </Context.Provider>
-    </div>
+    </CookiesProvider>
   );
 };
 

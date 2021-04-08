@@ -7,6 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Context from "../utils/context";
 import { userLogin } from "../utils/fetch";
+import { useCookies } from "react-cookie";
 
 const useStyles = makeStyles((theme) => ({
   outerContainer: {
@@ -50,11 +51,11 @@ export default function Login(props) {
   const context = useContext(Context);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [cookies, setCookie] = useCookies(["loginInfo"]);
 
   const handleChange = (e) => {
     let changeName = e.target.name;
     let currValue = e.target.value;
-    console.log(changeName);
     if (changeName === "username") {
       setUsername(currValue);
     } else {
@@ -73,10 +74,9 @@ export default function Login(props) {
       context.handleClearLoading();
       if (resultBack.status === 200) {
         context.handleSuccess("You have successfully signed in.");
-        console.log(resultBack);
         let loginData = { username: username, token: resultBack.token };
-        console.log(loginData);
         context.handleUserLogin(loginData);
+        setCookie("loginInfo", loginData, { path: "/" });
       } else {
         context.handleFailure(resultBack.data);
       }

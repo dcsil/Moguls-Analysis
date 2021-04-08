@@ -56,7 +56,6 @@ export default function Signup(props) {
   const handleChange = (e) => {
     let changeName = e.target.name;
     let currValue = e.target.value;
-    console.log(changeName);
     if (changeName === "username") {
       setUsername(currValue);
     } else if (changeName === "password") {
@@ -69,7 +68,6 @@ export default function Signup(props) {
   function handleRegister(event) {
     event.preventDefault();
     if (password !== confirmedPassword) {
-      console.log("passwords don't match");
       context.handleFailure("Please make sure your passwords match.");
       return;
     }
@@ -83,7 +81,6 @@ export default function Signup(props) {
       context.handleClearLoading();
       if (resultBack.status === 200) {
         context.handleSuccess("Your account is successfully registered.");
-        console.log("successfully registered");
         props.switchLogin();
       } else {
         context.handleFailure(resultBack.data);

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Context from "../utils/context";
+import { userLogout } from "../utils/fetch";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -63,6 +64,12 @@ export default function Header() {
     prevOpen.current = open;
   }, [open]);
 
+  function handleLogout(event) {
+    event.preventDefault();
+    context.handleSuccess("You have successfully logged out.");
+    context.handleUserLogout();
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="fixed">
@@ -110,7 +117,7 @@ export default function Header() {
                           id="menu-list-grow"
                           onKeyDown={handleListKeyDown}
                         >
-                          <MenuItem onClick={handleClose}>Logout</MenuItem>
+                          <MenuItem onClick={handleLogout}>Logout</MenuItem>
                         </MenuList>
                       </ClickAwayListener>
                     </Paper>
