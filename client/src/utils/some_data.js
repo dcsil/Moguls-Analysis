@@ -9,16 +9,20 @@ const config = {
 };
 const math = create(all, config);
 
+const formatDate = (dateStr) => {
+  return new Date(dateStr)
+    .toISOString()
+    .replace("-", "/")
+    .split("T")[0]
+    .replace("-", "/");
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   data: [
     {
       name: "Giacomo Guilizzoni",
-      date: new Date("2021-02-08")
-        .toISOString()
-        .replace("-", "/")
-        .split("T")[0]
-        .replace("-", "/"),
+      date: formatDate("2021-02-08"),
       trick: "cork 7s",
       hipChestAngle: math.round(math.random(170, 190), 1).toFixed(0),
       kneeHipAngle: math.round(math.random(170, 190), 1).toFixed(0),
@@ -29,11 +33,7 @@ export default {
     },
     {
       name: "Marco Botton",
-      date: new Date("2021-02-08")
-        .toISOString()
-        .replace("-", "/")
-        .split("T")[0]
-        .replace("-", "/"),
+      date: formatDate("2021-02-08"),
       trick: "quad twisters",
       hipChestAngle: math.round(math.random(170, 190), 1).toFixed(0),
       kneeHipAngle: math.round(math.random(170, 190), 1).toFixed(0),
@@ -44,11 +44,7 @@ export default {
     },
     {
       name: "Giacomo Guilizzoni",
-      date: new Date("2021-02-07")
-        .toISOString()
-        .replace("-", "/")
-        .split("T")[0]
-        .replace("-", "/"),
+      date: formatDate("2021-02-07"),
       trick: "dspin 7s",
       hipChestAngle: math.round(math.random(170, 190), 1).toFixed(0),
       kneeHipAngle: math.round(math.random(170, 190), 1).toFixed(0),
@@ -59,11 +55,7 @@ export default {
     },
     {
       name: "Mariah Maclachlan",
-      date: new Date("2021-02-07")
-        .toISOString()
-        .replace("-", "/")
-        .split("T")[0]
-        .replace("-", "/"),
+      date: formatDate("2021-02-07"),
       trick: "back fulls",
       hipChestAngle: math.round(math.random(170, 190), 1).toFixed(0),
       kneeHipAngle: math.round(math.random(170, 190), 1).toFixed(0),
@@ -74,11 +66,7 @@ export default {
     },
     {
       name: "Valerie Liberty",
-      date: new Date("2021-02-06")
-        .toISOString()
-        .replace("-", "/")
-        .split("T")[0]
-        .replace("-", "/"),
+      date: formatDate("2021-02-06"),
       trick: "cork 7s",
       hipChestAngle: math.round(math.random(170, 190), 1).toFixed(0),
       kneeHipAngle: math.round(math.random(170, 190), 1).toFixed(0),
@@ -89,11 +77,7 @@ export default {
     },
     {
       name: "Giacomo Guilizzoni",
-      date: new Date("2021-02-05")
-        .toISOString()
-        .replace("-", "/")
-        .split("T")[0]
-        .replace("-", "/"),
+      date: formatDate("2021-02-05"),
       trick: "quad twisters",
       hipChestAngle: math.round(math.random(170, 190), 1).toFixed(0),
       kneeHipAngle: math.round(math.random(170, 190), 1).toFixed(0),
@@ -104,11 +88,7 @@ export default {
     },
     {
       name: "Marco Botton",
-      date: new Date("2021-02-02")
-        .toISOString()
-        .replace("-", "/")
-        .split("T")[0]
-        .replace("-", "/"),
+      date: formatDate("2021-02-02"),
       trick: "dspin 7s",
       hipChestAngle: math.round(math.random(170, 190), 1).toFixed(0),
       kneeHipAngle: math.round(math.random(170, 190), 1).toFixed(0),
@@ -119,11 +99,7 @@ export default {
     },
     {
       name: "Mariah Maclachlan",
-      date: new Date("2021-02-01")
-        .toISOString()
-        .replace("-", "/")
-        .split("T")[0]
-        .replace("-", "/"),
+      date: formatDate("2021-02-01"),
       trick: "quad twisters",
       hipChestAngle: math.round(math.random(170, 190), 1).toFixed(0),
       kneeHipAngle: math.round(math.random(170, 190), 1).toFixed(0),
