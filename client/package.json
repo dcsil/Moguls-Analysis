@@ -15,8 +15,10 @@
     "axios": "^0.21.1",
     "mathjs": "^9.2.0",
     "react": "^17.0.1",
+    "react-cookie": "^4.0.3",
     "react-dom": "^17.0.1",
     "react-dropzone": "^11.3.0",
+    "react-hooks-testing-library": "^0.6.0",
     "react-player": "^2.9.0",
     "react-scripts": "4.0.2",
     "web-vitals": "^1.0.1"
@@ -24,7 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "nyc": "^15.1.0"
   }
 }

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Context from "../utils/context";
+// import { userLogout } from "../utils/fetch";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -14,6 +15,7 @@ import Popper from "@material-ui/core/Popper";
 import MenuList from "@material-ui/core/MenuList";
 import Logo from "./Logo";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import { useCookies } from "react-cookie";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     marginLeft: theme.spacing(1),
   },
+  button: {
+    textTransform: "none",
+  },
 }));
 
 export default function Header() {
@@ -30,6 +35,7 @@ export default function Header() {
   const context = useContext(Context);
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+  const [cookies, setCookie] = useCookies(["loginInfo"]);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -60,6 +66,13 @@ export default function Header() {
     prevOpen.current = open;
   }, [open]);
 
+  function handleLogout(event) {
+    event.preventDefault();
+    context.handleSuccess("You have successfully logged out.");
+    context.handleUserLogout();
+    setCookie("loginInfo", {});
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="fixed">
@@ -78,6 +91,7 @@ export default function Header() {
                 aria-haspopup="true"
                 onClick={handleToggle}
                 color="inherit"
+                className={classes.button}
               >
                 <AccountCircle />{" "}
                 <Typography variant="h5" className={classes.title}>
@@ -106,7 +120,7 @@ export default function Header() {
                           id="menu-list-grow"
                           onKeyDown={handleListKeyDown}
                         >
-                          <MenuItem onClick={handleClose}>Logout</MenuItem>
+                          <MenuItem onClick={handleLogout}>Logout</MenuItem>
                         </MenuList>
                       </ClickAwayListener>
                     </Paper>
