@@ -1,9 +1,13 @@
+import React, { useState, useContext } from "react";
 import { Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Context from "../utils/context";
+import { userLogin } from "../utils/fetch";
+import { useCookies } from "react-cookie";
 
 const useStyles = makeStyles((theme) => ({
   outerContainer: {
@@ -42,8 +46,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
+export default function Login(props) {
   const classes = useStyles();
+  const context = useContext(Context);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [cookies, setCookie] = useCookies(["loginInfo"]);
+
+  const handleChange = (e) => {
+    let changeName = e.target.name;
+    let currValue = e.target.value;
+    if (changeName === "username") {
+      setUsername(currValue);
+    } else {
+      setPassword(currValue);
+    }
+  };
+
+  function handleLogin(event) {
+    event.preventDefault();
+    const sendLoginRequest = async () => {
+      context.handleLoading();
+      const resultBack = await userLogin({
+        username: username,
+        password: password,
+      });
+      context.handleClearLoading();
+      if (resultBack.status === 200) {
+        context.handleSuccess("You have successfully signed in.");
+        let loginData = { username: username, token: resultBack.data.token };
+        context.handleUserLogin(loginData);
+        setCookie("loginInfo", loginData);
+      } else {
+        context.handleFailure(resultBack.data);
+      }
+    };
+    sendLoginRequest();
+  }
 
   return (
     <div className={classes.root}>
@@ -66,6 +105,7 @@ export default function Login() {
                     color="secondary"
                     size="small"
                     className={classes.signupButton}
+                    onClick={props.switchRegister}
                   >
                     Sign up
                   </Button>
@@ -88,8 +128,11 @@ export default function Login() {
                   type="email"
                   label="Your email"
                   variant="outlined"
+                  name="username"
+                  value={username}
                   fullWidth
                   className={classes.textField}
+                  onChange={handleChange}
                 />
                 <Typography variant="h5" className={classes.loginLabel}>
                   Password
@@ -99,9 +142,12 @@ export default function Login() {
                   id="password"
                   type="password"
                   label="Your password"
+                  name="password"
+                  value={password}
                   variant="outlined"
                   fullWidth
                   className={classes.textField}
+                  onChange={handleChange}
                 />
                 <Button
                   variant="contained"
@@ -109,6 +155,7 @@ export default function Login() {
                   type="submit"
                   size="large"
                   className={classes.loginButton}
+                  onClick={handleLogin}
                 >
                   LOGIN
                 </Button>

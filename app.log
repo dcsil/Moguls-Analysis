@@ -410,3 +410,670 @@ pymongo.errors.ServerSelectionTimeoutError: 491-shard-00-02.kqgyf.mongodb.net:27
 2021-04-04 15:24:43,069 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
 2021-04-04 17:18:52,759 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
 2021-04-04 19:33:52,722 - INFO - app.py - <module> - 27 - ========== Logging Started ==========
+2021-04-06 18:30:05,756 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-06 18:33:12,039 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 05:47:32,286 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 06:07:20,049 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 06:19:11,531 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 06:27:45,135 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 18:12:16,795 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 18:17:46,047 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 18:20:32,308 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 18:28:16,556 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 18:32:48,276 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 18:35:03,541 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 18:37:51,273 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 18:44:15,197 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 18:45:33,280 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 18:46:59,150 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 19:08:08,353 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 19:31:58,346 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 19:32:26,546 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 19:37:28,964 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 19:37:47,749 - ERROR - app.py - log_exception - 1890 - Exception on /logout [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 124, in logout
+    logout_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 198, in logout_user
+    user = _get_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 331, in _load_user
+    user = self._load_user_from_request(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 390, in _load_user_from_request
+    user = self._request_callback(request)
+  File "app.py", line 139, in user_loader
+    return User(User.verify_token(token))
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 186, in loads
+    payload, header = JSONWebSignatureSerializer.loads(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 143, in loads
+    self.make_signer(salt, self.algorithm).unsign(want_bytes(s)),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/signer.py", line 164, in unsign
+    if sep not in signed_value:
+TypeError: argument of type 'NoneType' is not iterable
+2021-04-07 19:37:50,938 - ERROR - app.py - log_exception - 1890 - Exception on /logout [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 124, in logout
+    logout_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 198, in logout_user
+    user = _get_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 331, in _load_user
+    user = self._load_user_from_request(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 390, in _load_user_from_request
+    user = self._request_callback(request)
+  File "app.py", line 139, in user_loader
+    return User(User.verify_token(token))
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 186, in loads
+    payload, header = JSONWebSignatureSerializer.loads(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 143, in loads
+    self.make_signer(salt, self.algorithm).unsign(want_bytes(s)),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/signer.py", line 164, in unsign
+    if sep not in signed_value:
+TypeError: argument of type 'NoneType' is not iterable
+2021-04-07 19:38:31,942 - ERROR - app.py - log_exception - 1890 - Exception on /logout [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 124, in logout
+    logout_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 198, in logout_user
+    user = _get_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 331, in _load_user
+    user = self._load_user_from_request(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 390, in _load_user_from_request
+    user = self._request_callback(request)
+  File "app.py", line 139, in user_loader
+    return User(User.verify_token(token))
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 186, in loads
+    payload, header = JSONWebSignatureSerializer.loads(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 143, in loads
+    self.make_signer(salt, self.algorithm).unsign(want_bytes(s)),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/signer.py", line 164, in unsign
+    if sep not in signed_value:
+TypeError: argument of type 'NoneType' is not iterable
+2021-04-07 19:39:14,232 - ERROR - app.py - log_exception - 1890 - Exception on /logout [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 124, in logout
+    logout_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 198, in logout_user
+    user = _get_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 331, in _load_user
+    user = self._load_user_from_request(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 390, in _load_user_from_request
+    user = self._request_callback(request)
+  File "app.py", line 139, in user_loader
+    return User(User.verify_token(token))
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 186, in loads
+    payload, header = JSONWebSignatureSerializer.loads(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 143, in loads
+    self.make_signer(salt, self.algorithm).unsign(want_bytes(s)),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/signer.py", line 164, in unsign
+    if sep not in signed_value:
+TypeError: argument of type 'NoneType' is not iterable
+2021-04-07 19:39:15,551 - ERROR - app.py - log_exception - 1890 - Exception on /logout [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 124, in logout
+    logout_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 198, in logout_user
+    user = _get_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 331, in _load_user
+    user = self._load_user_from_request(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 390, in _load_user_from_request
+    user = self._request_callback(request)
+  File "app.py", line 139, in user_loader
+    return User(User.verify_token(token))
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 186, in loads
+    payload, header = JSONWebSignatureSerializer.loads(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 143, in loads
+    self.make_signer(salt, self.algorithm).unsign(want_bytes(s)),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/signer.py", line 164, in unsign
+    if sep not in signed_value:
+TypeError: argument of type 'NoneType' is not iterable
+2021-04-07 19:39:31,999 - ERROR - app.py - log_exception - 1890 - Exception on /logout [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 124, in logout
+    logout_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 198, in logout_user
+    user = _get_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 331, in _load_user
+    user = self._load_user_from_request(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 390, in _load_user_from_request
+    user = self._request_callback(request)
+  File "app.py", line 139, in user_loader
+    return User(User.verify_token(token))
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 186, in loads
+    payload, header = JSONWebSignatureSerializer.loads(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 143, in loads
+    self.make_signer(salt, self.algorithm).unsign(want_bytes(s)),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/signer.py", line 164, in unsign
+    if sep not in signed_value:
+TypeError: argument of type 'NoneType' is not iterable
+2021-04-07 19:39:34,603 - ERROR - app.py - log_exception - 1890 - Exception on /logout [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 124, in logout
+    logout_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 198, in logout_user
+    user = _get_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 331, in _load_user
+    user = self._load_user_from_request(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 390, in _load_user_from_request
+    user = self._request_callback(request)
+  File "app.py", line 139, in user_loader
+    return User(User.verify_token(token))
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 186, in loads
+    payload, header = JSONWebSignatureSerializer.loads(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 143, in loads
+    self.make_signer(salt, self.algorithm).unsign(want_bytes(s)),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/signer.py", line 164, in unsign
+    if sep not in signed_value:
+TypeError: argument of type 'NoneType' is not iterable
+2021-04-07 19:39:43,795 - ERROR - app.py - log_exception - 1890 - Exception on /logout [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 124, in logout
+    logout_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 198, in logout_user
+    user = _get_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 331, in _load_user
+    user = self._load_user_from_request(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 390, in _load_user_from_request
+    user = self._request_callback(request)
+  File "app.py", line 139, in user_loader
+    return User(User.verify_token(token))
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 186, in loads
+    payload, header = JSONWebSignatureSerializer.loads(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 143, in loads
+    self.make_signer(salt, self.algorithm).unsign(want_bytes(s)),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/signer.py", line 164, in unsign
+    if sep not in signed_value:
+TypeError: argument of type 'NoneType' is not iterable
+2021-04-07 19:40:24,275 - ERROR - app.py - log_exception - 1890 - Exception on /logout [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 124, in logout
+    logout_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 198, in logout_user
+    user = _get_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 331, in _load_user
+    user = self._load_user_from_request(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 390, in _load_user_from_request
+    user = self._request_callback(request)
+  File "app.py", line 139, in user_loader
+    return User(User.verify_token(token))
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 186, in loads
+    payload, header = JSONWebSignatureSerializer.loads(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 143, in loads
+    self.make_signer(salt, self.algorithm).unsign(want_bytes(s)),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/signer.py", line 164, in unsign
+    if sep not in signed_value:
+TypeError: argument of type 'NoneType' is not iterable
+2021-04-07 19:40:25,434 - ERROR - app.py - log_exception - 1890 - Exception on /logout [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 124, in logout
+    logout_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 198, in logout_user
+    user = _get_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 331, in _load_user
+    user = self._load_user_from_request(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 390, in _load_user_from_request
+    user = self._request_callback(request)
+  File "app.py", line 139, in user_loader
+    return User(User.verify_token(token))
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 186, in loads
+    payload, header = JSONWebSignatureSerializer.loads(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 143, in loads
+    self.make_signer(salt, self.algorithm).unsign(want_bytes(s)),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/signer.py", line 164, in unsign
+    if sep not in signed_value:
+TypeError: argument of type 'NoneType' is not iterable
+2021-04-07 19:41:32,147 - ERROR - app.py - log_exception - 1890 - Exception on /logout [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 124, in logout
+    logout_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 198, in logout_user
+    user = _get_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 331, in _load_user
+    user = self._load_user_from_request(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 390, in _load_user_from_request
+    user = self._request_callback(request)
+  File "app.py", line 139, in user_loader
+    return User(User.verify_token(token))
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 186, in loads
+    payload, header = JSONWebSignatureSerializer.loads(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 143, in loads
+    self.make_signer(salt, self.algorithm).unsign(want_bytes(s)),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/signer.py", line 164, in unsign
+    if sep not in signed_value:
+TypeError: argument of type 'NoneType' is not iterable
+2021-04-07 19:41:36,028 - ERROR - app.py - log_exception - 1890 - Exception on /logout [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 124, in logout
+    logout_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 198, in logout_user
+    user = _get_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 331, in _load_user
+    user = self._load_user_from_request(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 390, in _load_user_from_request
+    user = self._request_callback(request)
+  File "app.py", line 139, in user_loader
+    return User(User.verify_token(token))
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 186, in loads
+    payload, header = JSONWebSignatureSerializer.loads(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 143, in loads
+    self.make_signer(salt, self.algorithm).unsign(want_bytes(s)),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/signer.py", line 164, in unsign
+    if sep not in signed_value:
+TypeError: argument of type 'NoneType' is not iterable
+2021-04-07 20:04:54,980 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-07 20:32:43,502 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 06:43:11,013 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 10:44:00,229 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 10:53:49,813 - ERROR - app.py - log_exception - 1890 - Exception on /logout [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 124, in logout
+    logout_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 198, in logout_user
+    user = _get_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 331, in _load_user
+    user = self._load_user_from_request(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 390, in _load_user_from_request
+    user = self._request_callback(request)
+  File "app.py", line 139, in user_loader
+    return User(User.verify_token(token))
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 186, in loads
+    payload, header = JSONWebSignatureSerializer.loads(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 143, in loads
+    self.make_signer(salt, self.algorithm).unsign(want_bytes(s)),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/signer.py", line 164, in unsign
+    if sep not in signed_value:
+TypeError: argument of type 'NoneType' is not iterable
+2021-04-08 10:55:23,255 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 11:02:21,664 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 11:03:21,196 - ERROR - app.py - log_exception - 1890 - Exception on /getAllData [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 192, in get_all_data
+    cur_user = user_loader(request)
+  File "app.py", line 138, in user_loader
+    return User(User.verify_token(token)) if token else None
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 186, in loads
+    payload, header = JSONWebSignatureSerializer.loads(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 143, in loads
+    self.make_signer(salt, self.algorithm).unsign(want_bytes(s)),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/signer.py", line 169, in unsign
+    raise BadSignature("Signature %r does not match" % sig, payload=value)
+itsdangerous.exc.BadSignature: Signature b'G0JtCB2nT9bmDPnixCU9EkrwNgmRsQm_iuAh3V3VOTthtzh4Knz6crP2YX2ZSv4vbEKOG_4D1Qqr-6yr6ERFw' does not match
+2021-04-08 11:03:24,400 - ERROR - app.py - log_exception - 1890 - Exception on /getAllData [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 192, in get_all_data
+    cur_user = user_loader(request)
+  File "app.py", line 138, in user_loader
+    return User(User.verify_token(token)) if token else None
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 186, in loads
+    payload, header = JSONWebSignatureSerializer.loads(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 143, in loads
+    self.make_signer(salt, self.algorithm).unsign(want_bytes(s)),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/signer.py", line 169, in unsign
+    raise BadSignature("Signature %r does not match" % sig, payload=value)
+itsdangerous.exc.BadSignature: Signature b'G0JtCB2nT9bmDPnixCU9EkrwNgmRsQm_iuAh3V3VOTthtzh4Knz6crP2YX2ZSv4vbEKOG_4D1Qqr-6yr6ERFw' does not match
+2021-04-08 11:03:32,387 - ERROR - app.py - log_exception - 1890 - Exception on /getAllData [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 192, in get_all_data
+    cur_user = user_loader(request)
+  File "app.py", line 138, in user_loader
+    return User(User.verify_token(token)) if token else None
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 186, in loads
+    payload, header = JSONWebSignatureSerializer.loads(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 143, in loads
+    self.make_signer(salt, self.algorithm).unsign(want_bytes(s)),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/signer.py", line 165, in unsign
+    raise BadSignature("No %r found in value" % self.sep)
+itsdangerous.exc.BadSignature: No b'.' found in value
+2021-04-08 11:56:21,953 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 11:57:22,938 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 12:00:00,990 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 12:03:31,987 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 12:04:45,204 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 12:10:30,707 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 12:19:31,105 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 12:49:54,133 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 13:02:18,116 - ERROR - app.py - log_exception - 1890 - Exception on /addData [POST]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 226, in add_data
+    cur_user = user_loader(request)
+  File "app.py", line 138, in user_loader
+    return User(User.verify_token(token)) if token else None
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 202, in loads
+    raise SignatureExpired(
+itsdangerous.exc.SignatureExpired: Signature expired
+2021-04-08 13:02:26,904 - ERROR - app.py - log_exception - 1890 - Exception on /addData [POST]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 226, in add_data
+    cur_user = user_loader(request)
+  File "app.py", line 138, in user_loader
+    return User(User.verify_token(token)) if token else None
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 202, in loads
+    raise SignatureExpired(
+itsdangerous.exc.SignatureExpired: Signature expired
+2021-04-08 13:02:43,392 - ERROR - app.py - log_exception - 1890 - Exception on /addData [POST]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 226, in add_data
+    cur_user = user_loader(request)
+  File "app.py", line 138, in user_loader
+    return User(User.verify_token(token)) if token else None
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 202, in loads
+    raise SignatureExpired(
+itsdangerous.exc.SignatureExpired: Signature expired
+2021-04-08 13:02:54,204 - ERROR - app.py - log_exception - 1890 - Exception on /getAllData [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 192, in get_all_data
+    cur_user = user_loader(request)
+  File "app.py", line 138, in user_loader
+    return User(User.verify_token(token)) if token else None
+  File "/Users/kexinlin/Desktop/Moguls-Analysis/model.py", line 30, in verify_token
+    data = s.loads(token)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 202, in loads
+    raise SignatureExpired(
+itsdangerous.exc.SignatureExpired: Signature expired
+2021-04-08 13:12:02,331 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 13:19:55,218 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 13:21:51,931 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 13:22:33,298 - INFO - app.py - <module> - 30 - ========== Logging Started ==========
+2021-04-08 13:26:33,685 - INFO - app.py - <module> - 30 - ========== Logging Started ==========

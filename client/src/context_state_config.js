@@ -5,6 +5,7 @@ import * as AuthReducer from "./store/reducers/auth_reducer";
 import * as MessageReducer from "./store/reducers/message_reducer";
 // import * as DataReducer from "./store/reducers/data_reducer";
 import Main from "./components/Main";
+import { CookiesProvider } from "react-cookie";
 
 const ContextState = () => {
   /* Auth Reducer */
@@ -13,8 +14,8 @@ const ContextState = () => {
     AuthReducer.initialState
   );
 
-  const handleLogin = (username) => {
-    dispatchAuthReducer(ACTIONS.login_success(username));
+  const handleLogin = (data) => {
+    dispatchAuthReducer(ACTIONS.login_success(data));
   };
 
   const handleLogout = () => {
@@ -66,12 +67,13 @@ const ContextState = () => {
   // };
 
   return (
-    <div>
+    <CookiesProvider>
       <Context.Provider
         value={{
           // Auth Reducer
           authState: stateAuthReducer.isAuth,
           usernameState: stateAuthReducer.username,
+          tokenState: stateAuthReducer.token,
           handleUserLogin: (username) => handleLogin(username),
           handleUserLogout: () => handleLogout(),
           // Message Reducer
@@ -93,7 +95,7 @@ const ContextState = () => {
       >
         <Main />
       </Context.Provider>
-    </div>
+    </CookiesProvider>
   );
 };
 

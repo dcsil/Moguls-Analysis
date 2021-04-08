@@ -319,7 +319,8 @@ const DataTable = forwardRef((props, ref) => {
   useEffect(() => {
     const setTableData = async () => {
       context.handleLoading();
-      const resultBack = await getAllData();
+      console.log(context.tokenState);
+      const resultBack = await getAllData(context.tokenState);
       context.handleClearLoading();
       console.log(data);
       if (resultBack.status === 200) {
@@ -356,7 +357,7 @@ const DataTable = forwardRef((props, ref) => {
     context.handleLoading();
     for (let i = 0; i < selectedRows.length; i++) {
       let selectedRowId = selectedRows[i]._id;
-      const resultBack = await deleteData(selectedRowId);
+      const resultBack = await deleteData(selectedRowId, context.tokenState);
       if (resultBack.status !== 200) {
         context.handleFailure(resultBack.data);
         return;

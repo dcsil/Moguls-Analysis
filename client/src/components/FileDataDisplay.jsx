@@ -4,7 +4,6 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import AssignmentReturnIcon from "@material-ui/icons/AssignmentReturn";
-import * as math from "mathjs";
 
 // import for dialog form
 import Dialog from "@material-ui/core/Dialog";
