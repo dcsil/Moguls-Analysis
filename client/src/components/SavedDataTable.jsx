@@ -20,7 +20,6 @@ import Switch from "@material-ui/core/Switch";
 import FilterGrid from "./FilterGrid";
 import { deleteData, getAllData } from "../utils/fetch";
 import Context from "../utils/context";
-import data from "../utils/some_data";
 import {
   EnhancedTableToolbar,
   EnhancedTableHead,
@@ -88,7 +87,6 @@ const DataTable = forwardRef((props, ref) => {
       console.log(context.tokenState);
       const resultBack = await getAllData(context.tokenState);
       context.handleClearLoading();
-      console.log(data);
       if (resultBack.status === 200) {
         setRows(Object.values(resultBack.data));
         console.log(resultBack.data);
