@@ -18,6 +18,19 @@ export const uploadVideo = (data) => {
     });
 };
 
+export const uploadImage = (data) => {
+  return axios
+    .post("http://184.146.155.55:5000/", data, {
+      headers: {
+        Accept: "application/json, */*",
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    .catch((error) => {
+      return error.response;
+    });
+};
+
 /** get all saved data from database */
 export const getAllData = (token) => {
   return axios

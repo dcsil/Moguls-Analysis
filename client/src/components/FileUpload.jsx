@@ -5,7 +5,7 @@ import ReactPlayer from "react-player";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import { uploadVideo } from "../utils/fetch";
+import { uploadVideo, uploadImage } from "../utils/fetch";
 import Context from "../utils/context";
 
 // reference code:
@@ -38,39 +38,40 @@ function FileUpload(props) {
 
   // State to store uploaded file
   const [file, setFile] = useState(null);
-  const [videoPath, setVideoPath] = useState(null);
-  const [imageResult, setImageResult] = useState(false);
+  const [filePath, setFilePath] = useState(null);
+  const [uploadResult, setUploadResult] = useState(false);
 
   // State for Dropzpne
   const { getRootProps, getInputProps } = useDropzone({
-    accept: "video/*",
+    accept: "image/*",
     onDrop: (acceptedFiles) => {
       setFile(acceptedFiles[0]);
-      setVideoPath(URL.createObjectURL(acceptedFiles[0]));
+      setFilePath(URL.createObjectURL(acceptedFiles[0]));
     },
   });
 
   // Handles file upload event and updates state
   function handleUpload() {
-    const uploadVideoAndGetResult = async () => {
+    const uploadImageAndGetResult = async () => {
       context.handleLoading();
       const formData = new FormData();
       formData.append("file", file);
       formData.append("filename", file.name);
       console.log(formData.get("file"));
       console.log(formData.get("filename"));
-      const resultBack = await uploadVideo(formData);
+      // const resultBack = await uploadVideo(formData);
+      const resultBack = await uploadImage(formData);
       context.handleClearLoading();
       if (resultBack.status === 200) {
         context.handleSuccess("Metrics are successfully extracted.");
         props.onClick({ ...resultBack.data, videoName: file.name });
-        setImageResult(true);
+        setUploadResult(true);
       } else {
         // console.log(resultBack.data);
         context.handleFailure(resultBack.data);
       }
     };
-    uploadVideoAndGetResult();
+    uploadImageAndGetResult();
   }
 
   return (
@@ -78,30 +79,18 @@ function FileUpload(props) {
       <Paper className={classes.paper} {...getRootProps()}>
         <input {...getInputProps()} name="file" type="file" />
         {file ? (
-          imageResult ? (
-            <img
-              src="/static/result.png"
-              alt="Pose estimation with annotation"
-            />
-          ) : (
-            <ReactPlayer
-              url={videoPath}
-              width="100%"
-              height="100%"
-              controls={true}
-            />
-          )
+          <img src={filePath} alt="uploaded file" />
         ) : (
           <div>
             <CloudUploadIcon fontSize="large" />
             <h2 style={{ margin: "20px" }}>
-              Drag and drop a video file here, or click to select a video
+              Drag and drop an image file here, or click to select an image
             </h2>
-            <h3>(Supported video extensions: mp4)</h3>
+            <h3>(Supported image extensions: png, jpg, jpeg)</h3>
           </div>
         )}
       </Paper>
-      {imageResult ? (
+      {uploadResult ? (
         <Button
           variant="contained"
           color="secondary"
@@ -109,9 +98,9 @@ function FileUpload(props) {
           fullWidth={true}
           style={{ marginTop: "20px" }}
           onClick={() => {
-            setImageResult(false);
+            setUploadResult(false);
             setFile(null);
-            setVideoPath(null);
+            setFilePath(null);
           }}
         >
           Clear Uploaded File
