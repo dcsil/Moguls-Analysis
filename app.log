@@ -1152,3 +1152,4 @@ Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/itsdangerous/jws.py", line 202, in loads
     raise SignatureExpired(
 itsdangerous.exc.SignatureExpired: Signature expired
+2021-04-09 09:14:18,493 - INFO - app.py - <module> - 30 - ========== Logging Started ==========

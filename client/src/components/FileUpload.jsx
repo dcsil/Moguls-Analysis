@@ -59,6 +59,7 @@ function FileUpload(props) {
       formData.append("filename", file.name);
       console.log(formData.get("file"));
       console.log(formData.get("filename"));
+      console.log("current token: " + context.tokenState);
       const resultBack = await uploadVideo(formData, context.tokenState);
       context.handleClearLoading();
       if (resultBack.status === 200) {

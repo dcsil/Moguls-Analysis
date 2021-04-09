@@ -7,6 +7,29 @@ This is a repository for our Moguls Analysis web app which is available at https
 [![Backend Server CI](https://github.com/dcsil/Moguls-Analysis/actions/workflows/python-app.yml/badge.svg?branch=master)](https://github.com/dcsil/Moguls-Analysis/actions/workflows/python-app.yml)
 [![Front-end CI](https://github.com/dcsil/Moguls-Analysis/actions/workflows/front-end.yml/badge.svg?branch=master)](https://github.com/dcsil/Moguls-Analysis/actions/workflows/front-end.yml)
 
+### About Our Product
+Our software is a video analysis tool for moguls skiing. 
+
+Accuracy is an important aspect of sports performance, so we want to save time and improve efficiency for trainers by extracting key body metrics from key moments in videos.
+
+Highlights:
+
+- video drag-n-drop uploading
+- video playing online
+- algorithm for extracting body metrics based on pose estimation
+- data saving with tags
+- data sorting with arbitrary attributes
+- data filtering with arbitrary attributes
+- user account registration and login
+- cookie and session for saving authentication status
+
+
+Not fully implemented yet:
+- algorithm for event detection (to find the correct moment that the skiing board leaves the ramp in the video)
+
+
+### Demo Video
+[Link to the Demo Video](https://youtu.be/RxU_x1gVL6Q)
 
 ### Setup
 
