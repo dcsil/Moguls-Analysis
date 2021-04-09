@@ -5,12 +5,15 @@ import axios from "axios";
  * @param {*} video the video file that is needed to be upload
  */
 
-export const uploadVideo = (data) => {
+export const uploadVideo = (data, token) => {
   return axios
     .post("/videoUpload", data, {
       headers: {
         Accept: "application/json, video/*, */*",
         "Content-Type": "multipart/form-data",
+      },
+      params: {
+        token: token,
       },
     })
     .catch((error) => {

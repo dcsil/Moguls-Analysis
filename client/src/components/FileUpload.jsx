@@ -59,7 +59,7 @@ function FileUpload(props) {
       formData.append("filename", file.name);
       console.log(formData.get("file"));
       console.log(formData.get("filename"));
-      const resultBack = await uploadVideo(formData);
+      const resultBack = await uploadVideo(formData, context.tokenState);
       context.handleClearLoading();
       if (resultBack.status === 200) {
         context.handleSuccess("Metrics are successfully extracted.");
